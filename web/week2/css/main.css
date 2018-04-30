@@ -1,0 +1,55 @@
+body {
+margin-top: 25px;
+}
+
+.content {
+  font-size: 125%;
+}
+
+.content:hover {
+  font-weight: bold;
+}
+
+.content:first-of-type {
+  background-color: red;
+}
+
+.content:nth-of-type(n+2) {
+  background-color: green;
+}
+
+.content:nth-of-type(n+3) {
+  background-color: yellow;
+}
+
+#container3 {
+  visibility: visible;
+}
+
+#fade-section {
+  display: block;
+}
+
+.container {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#container1, #container2, #container3 {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+label {
+  margin-top: 15px;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#click {
+  width: 200px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Week 2 Assignment</title>
+    <meta name="description" content="Week 2 Assignments for CS313 - Web Engineering II">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+    <main>
+      <article class="container align-middle">
+        <!-- CONTAINER 1 -->
+        <div id="container1" class="content">This is your color</div>
+        <label>Choose A Color:</label>
+        <input type="text" id="color">
+        <button type="submit" onclick="changeColor()" class="btn btn-default">Change Color</button>
+
+        <!-- CONTAINER 2 -->
+        <div id="container2" class="content">This is your color</div>
+        <label>Choose A Color:</label>
+        <input type="text" id="new-color">
+        <button type="submit" id="colorBtn" class="btn btn-default">Change Color</button>
+
+        <!-- CONTAINER 3 -->
+        <div id="container3" class="content">This is your color</div>
+        <div id="fade-section">
+          <label>Choose A Color:</label>
+          <input type="text" id="another-color">
+          <button type="submit" id="colorButton" class="btn btn-default">Change Color</button>
+          <button type="submit" id="fadeBtn" class="btn btn-default">Toggle Visibility</button>
+        </div>
+
+        <!-- ALERT MESSAGE -->
+        <button type="submit" onclick="alertMsg()" id="click" class="btn">Click Me</button>
+      </article>
+    </main>
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
