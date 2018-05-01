@@ -1,0 +1,118 @@
+* { margin: 0; box-sizing: border-box; }
+
+body {
+  font-size: 16px;
+  line-height: 32px;
+  font-family: Helvetica, Arial, Ubuntu, sans-serif;
+  color: #FAAD05;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #FFF;
+}
+
+h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid #bbb;
+  width: 99.5%;
+}
+
+main p:first-of-type {
+  margin-top: 25px;
+}
+
+figure img {
+  border: 2px solid black;
+}
+
+p, figcaption {
+  color: black;
+}
+
+figcaption {
+  font-size: .85rem;
+}
+
+header, main, footer {
+  margin: 1.25rem auto;
+  padding: .5rem;
+  max-width: 960px;
+}
+
+header, footer {
+  border: 5px solid;
+}
+
+header, footer, footer a {
+  text-align: center;
+  background-color: #FAAD05;
+  color: #000;
+}
+
+header img {
+  display: none;
+}
+
+@media only screen and (min-width: 500px) {
+  header img {
+    display: block;
+    width: 250px;
+    height: 205px;
+    float: right;
+    border: 2px solid;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+header img {
+  height: 225px;
+}
+}
+
+nav ul {
+  margin-left: -40px;
+}
+
+nav li {
+  display: inline;
+  padding: 0px 10px;
+  clear: right;
+}
+
+nav a {
+padding: 10px;
+}
+
+nav a:hover {
+  animation: bounce1 1.25s linear infinite;
+}
+
+ul {
+  color: black;
+  list-style-type: none;
+}
+
+footer {
+  margin-top: -25px;
+}
+
+footer p {
+  font-size: .85rem;
+  margin-top: 15px;
+}
+
+
+
+@keyframes bounce1 {
+  0% {
+    transform: translate(0, 0%); }
+  25% {
+    transform: translate(0%, -5%); }
+  50% {
+    transform: translate(0%, -10%); }
+  75% {
+    transform: translate(0%, -5%); }
+  100% {
+    transform: translate(0%, 0%); } }
