@@ -1,0 +1,30 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your Heroku web application:
+https://mysterious-hamlet-84455.herokuapp.com/hello.html
+
+2. Copy and paste the URL for your GitHub source code repository:
+https://github.com/Nilsson-Joshua/cs313-php
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+Displays 'Hello World' with 'Joshua Nilsson' underneath.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+Everything works.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+Hooking all of the repositories up through Git.
+
+6. Please select the category you feel best describes your assignment: [A-E]
+A - Some attempt was made
+B - Developing, but significantly deficient
+C - Slightly deficient, but still mostly adequate
+D - Meets requirements
+E - Shows creativity and excels above and beyond requirements
+
+D.
+
+7. Provide a brief justification (1-2 sentences) for selecting that category.
+I chose D. because I followed all of the instructions and successfully completed each of the items listed.
+Everything works as intended, and I do not think creativity is necessary to display a simple 'Hello World' message.
+I did use an HTML Boilerplate.
