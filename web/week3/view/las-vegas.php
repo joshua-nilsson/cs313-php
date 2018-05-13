@@ -17,7 +17,7 @@
           <h1>Tour Las Vegas</h1>
           <div class="row">
             <div class="col-sm-6">
-              <img src="../img/las-vegas.jpg" alt="Image of Las Vegas">
+              <img src="../img/las vegas.jpg" alt="Image of Las Vegas">
             </div>
             <div class="col-sm-3">
               <h2>Description</h2>
