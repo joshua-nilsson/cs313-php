@@ -63,6 +63,10 @@ input[type=submit] {
   img {
     height: 250px;
   }
+
+  .checkout {
+    margin-top: -75px;
+  }
 }
 
 main a {
@@ -73,6 +77,10 @@ p span {
   color: #007BFF;
   font-weight: bolder;
   font-size: 200%;
+}
+
+tr > td:first-of-type {
+  font-weight: bolder;
 }
 
 footer {
