@@ -58,7 +58,7 @@ $location = $_SESSION['location'];
               <input type="text" name="city" placeholder="London" required class="form-control">
               <label>Postal Code</label>
               <input type="text" name="postal" placeholder="NW1 6XE" required class="form-control">
-                <input type="submit" value="Purchase" class="btn btn-primary" href="china.php">
+              <input type="submit" value="Purchase" class="btn btn-primary" href="china.php">
             </div>
           </form>
         </section>
