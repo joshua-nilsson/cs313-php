@@ -46,12 +46,12 @@ setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 
           <div class="row">
             <div class="col-sm">
-              <img src="../img/new york.jpg" alt="Image of New York">
+              <img src="../img/new-york.jpg" alt="Image of New York">
               <h2>New York</h2>
               <a href="new-york.php" class="btn btn-primary" target="_blank">Travel to New York</a>
             </div>
             <div class="col-sm">
-              <img src="../img/las vegas.jpg" alt="Image of Las Vegas">
+              <img src="../img/las-vegas.jpg" alt="Image of Las Vegas">
               <h2>Las Vegas</h2>
               <a href="las-vegas.php" class="btn btn-primary" target="_blank">Travel to Las Vegas</a>
             </div>

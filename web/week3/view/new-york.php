@@ -17,7 +17,7 @@
           <h1>Tour New York</h1>
           <div class="row">
             <div class="col-sm-6">
-              <img src="../img/new york.jpg" alt="Image of New York">
+              <img src="../img/new-york.jpg" alt="Image of New York">
             </div>
             <div class="col-sm-3">
               <h2>Description</h2>
