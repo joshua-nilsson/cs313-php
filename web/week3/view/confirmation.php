@@ -32,7 +32,7 @@ $postal = $_POST['postal'];
           <h2><?php echo "Ticket Confirmation: " . $tickets . " Ticket(s) to " . $location . " @ $" . $price ?></h2>
           <div class="row">
             <div class="col-sm-6">
-              <img src="../img/<?php echo strtolower($location) ?>.jpg" alt="Image of Australia">
+              <img src="../img/<?php echo strtolower($location) ?>.jpg" alt="Image of <?php echo $location ?>">
             </div>
             <div class="col-sm-6">
               <table class="table table-striped">
