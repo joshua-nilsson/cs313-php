@@ -44,14 +44,22 @@ $location = $_SESSION['location'];
             </div>
           </div>
 
-          <form action="confirmation.php" method="post">
-            <div class="row justify-content-end">
-              <div class="col-sm-6 checkout">
+          <form action="confirmation.php" method="post" class="form-group" class="row">
+            <div class="col-sm-6">
+              <label for="">First Name</label>
+              <input type="text" name="firstName" placeholder="Sherlock" autofocus required class="form-control">
+              <label>Last Name</label>
+              <input type="text" name="lastName" placeholder="Holmes" required class="form-control">
+              <label>Address</label>
+              <input type="text" name="address" placeholder="221B Baker Street" required class="form-control">
+              <label>Country</label>
+              <input type="text" name="country" placeholder="England" required class="form-control">
+              <label>City</label>
+              <input type="text" name="city" placeholder="London" required class="form-control">
+              <label>Postal Code</label>
+              <input type="text" name="postal" placeholder="NW1 6XE" required class="form-control">
                 <input type="submit" value="Purchase" class="btn btn-primary" href="china.php">
-              </div>
             </div>
-            <input type="hidden" name="tour" value="Australia">
-            <input type="hidden" name="action" value="purchase">
           </form>
         </section>
       </article>
