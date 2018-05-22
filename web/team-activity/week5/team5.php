@@ -3,7 +3,7 @@
 <html>
 <body>
 
-<form action="05TeachTeam.php" method="get">
+<form action="query.php" method="get">
 
 <?php
 try
