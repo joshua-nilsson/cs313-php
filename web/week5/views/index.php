@@ -38,6 +38,17 @@ catch (PDOException $ex)
 
     <main>
       <?php include '../modules/example-config.php';?>
+
+      <?php
+
+      foreach ($db->query('SELECT nameId, nameText FROM names') as $name)
+      {
+        echo 'ID: ' . $name['nameId'];
+        echo ' password: ' . $name['nameText'];
+        echo '<br/>';
+      }
+
+      ?>
     </main>
 
     <footer>
