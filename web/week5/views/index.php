@@ -48,11 +48,11 @@ catch (PDOException $ex)
 //        echo '<br/>';
 //      }
 
-      $statement = $db->query('SELECT DISTINCT book FROM scriptures');
+      $statement = $db->query('SELECT nameId, nameText FROM names');
       echo'<tr>';
-      while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+      while ($name = $statement->fetch(PDO::FETCH_ASSOC))
       {
-        echo '<th><input type="checkbox" name="check[]" id="check" value="'. $row['book'] .'">'. $row['book'] .'</th><br>';
+        echo '<th><input type="checkbox" name="check[]" id="check" value="'. $name['nameId'] .'">'. $name['nameText'] .'</th><br>';
       }
       echo '</tr>';
 
