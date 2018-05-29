@@ -31,15 +31,18 @@ switch ($action) {
 
   case 'generate':
 
-//    $nameSlider = filter_input(INPUT_POST, 'nameSlider', FILTER_SANITIZE_STRING);
+    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
 
     $statement = $db->query('SELECT nameid, nametext FROM names');
 
-    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-    {
-      echo '<p>ID: ' . $row['nameid'] . '</p>';
+    for ($i=0;i<=$nameInput;i++) {
+      $row = $statement->fetch(PDO::FETCH_ASSOC)
       echo '<p>NAME: ' . $row['nametext'] . '</p>';
-    }
+   }
+//    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+//    {
+//      echo '<p>ID: ' . $row['nameid'] . '</p>';
+//    }
 
     header('Location: index.php');
 //    exit;
