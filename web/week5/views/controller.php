@@ -39,11 +39,11 @@ switch ($action) {
 //      $row = $statement->fetch(PDO::FETCH_ASSOC)
 //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
 //   }
-
+    $prompt = "<div>";
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
 
-        echo '<p>Name: ' . $row['nametext'] . '</p>';
+        $prompt .= '<p>Name: ' . $row['nametext'] . '</p>';
 //      $prompt = "<table class='table'>";
 //      $prompt .= "<thead id='head-dark' class='thead-dark'>";
 //      $prompt .= '<tr>';
@@ -75,6 +75,8 @@ switch ($action) {
 //      $prompt .= '</tbody>';
 //      $prompt .= '</table>';
     }
+
+    $prompt .= "</div";
 
     include 'index.php';
     break;
