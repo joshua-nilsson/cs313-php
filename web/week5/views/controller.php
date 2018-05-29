@@ -40,7 +40,7 @@ switch ($action) {
 //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
 //   }
 
-    $prompt = "<div class='container'>";
+    $prompt = "<div id='prompt' class='container'>";
     $prompt .= "<div class='row'>";
     $prompt .= "<div class='col-sm-6'>";
     $prompt .= "<div id='accordion'>";
@@ -91,7 +91,7 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</div>';
 
-    $collection = "<div class='col-sm-6'>";
+    $collection = "<div id='collection' class='col-sm-6'>";
     $collection .= "<div id='accordion'>";
     $collection .= "<div class='card'>";
     $collection .= "<div class='card-header' id='headingThree'>";

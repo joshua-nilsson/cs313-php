@@ -25,6 +25,6 @@ table > #head-dark {
   background-color: #444;
 }
 
-#how-many {
+#how-many, #prompt, #collection {
   margin-top: 15px;
 }
