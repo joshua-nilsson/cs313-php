@@ -52,7 +52,7 @@ catch (PDOException $ex)
 
       while ($row = $statement->fetch(PDO::FETCH_ASSOC))
       {
-        echo 'NAME: ' $row['nametext'];
+        echo 'NAME: ' . $row['nametext'];
       }
 
 
