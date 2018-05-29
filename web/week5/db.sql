@@ -39,8 +39,7 @@ CREATE TABLE collection (
 );
 
 INSERT INTO names (nameText)
-VALUES  ('John'),
-        ('Quimel'),
+VALUES  ('Quimel'),
         ('Akime'),
         ('Reichenshammer'),
         ('Menneguerre'),
