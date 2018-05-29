@@ -39,10 +39,12 @@ switch ($action) {
 //      $row = $statement->fetch(PDO::FETCH_ASSOC)
 //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
 //   }
+    $prompt = "<div>";
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
-      $prompt = '<p>NAME: ' . $row['nametext'] . '</p>';
+      $prompt .= '<p>NAME: ' . $row['nametext'] . '</p>';
     }
+    $prompt .= "</div>";
     include 'index.php';
 //    header('Location: index.php');
 //    exit;
