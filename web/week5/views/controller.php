@@ -43,7 +43,7 @@ switch ($action) {
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
 
-        $prompt = echo '<p>Name: ' . $row['nametext'] . '</p>';
+        $prompt = echo '<p>Name: ' . $row['nametext']'</p>';
 //      $prompt = "<table class='table'>";
 //      $prompt .= "<thead id='head-dark' class='thead-dark'>";
 //      $prompt .= '<tr>';
