@@ -50,7 +50,7 @@ switch ($action) {
     $prompt .= '<tbody>';
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
-      $prompt .= '<tr>';
+      $prompt = '<tr>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group input-group-default mb-6'>";
       $prompt .= "<div class='input-group-prepend'>";
