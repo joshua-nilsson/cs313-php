@@ -57,13 +57,13 @@ switch ($action) {
       $prompt .= '<td>';
       $prompt .= "<div class='input-group input-group-default mb-6'>";
       $prompt .= "<div class='input-group-prepend'>";
-      $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>SuikkLakan</div>";
+      $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[nametext]</div>";
       $prompt .= '</div>';
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group-append'>";
-      $prompt .= "<input type='text' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg' value='$row[nametext]'>";
+      $prompt .= "<input type='text' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '<td>';
