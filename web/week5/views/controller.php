@@ -39,23 +39,44 @@ switch ($action) {
 //      $row = $statement->fetch(PDO::FETCH_ASSOC)
 //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
 //   }
-    $prompt = "<div>";
+    $prompt = "<table class="table">";
+    $prompt .= "<thead id="head-dark" class="thead-dark">";
+    $prompt .= "<tr>";
+    $prompt .= "<th scope="col">PROMPT</th>";
+    $prompt .= "<th scope="col">NAME</th>";
+    $prompt .= "<th scope="col">CONTROLS</th>";
+    $prompt .= "</tr>";
+    $prompt .= "</thead>";
+    $prompt .= "<tbody>";
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
-      $prompt .= '<p>NAME: ' . $row['nametext'] . '</p>';
+      $prompt .= "<tr>";
+      $prompt .= "<td>";
+      $prompt .= "<div class="input-group input-group-default mb-6">";
+      $prompt .= "<div class="input-group-prepend">";
+      $prompt .= "<div class="input-group-text" id="inputGroup-sizing-sm">SuikkLakan</div>";
+      $prompt .= "</div>";
+      $prompt .= "</div>";
+      $prompt .= "</td>";
+      $prompt .= "<td>";
+      $prompt .= "<div class="input-group-append">";
+      $prompt .= "<input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-lg" value="$row['nametext']">";
+      $prompt .= "</div>";
+      $prompt .= "</td>";
+      $prompt .= "<td>";
+      $prompt .= "<div class="input-group-append">";
+      $prompt .= "<button class="btn btn-primary" type="button">SUBMIT</button>";
+      $prompt .= "</div>";
+      $prompt .= "</td>";
+      $prompt .= "</tr>";
     }
-    $prompt .= "</div>";
+    $prompt .= "</tbody>";
+    $prompt .= "</table>";
+
     include 'index.php';
-//    header('Location: index.php');
-//    exit;
     break;
 
   default:
       include 'index.php';
     }
-//    else {
-//    $message = '<p class="alertMsg">* Sorry, but the category submission failed. Please try again.</p>';
-//    include '../view/new-cat.php';
-//    exit;
-
 ?>
