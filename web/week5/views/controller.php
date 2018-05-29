@@ -39,7 +39,6 @@ switch ($action) {
 //      $row = $statement->fetch(PDO::FETCH_ASSOC)
 //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
 //   }
-//    $prompt = "<div>";
 
     $prompt = "<div class='container'>";
     $prompt .= "<div class='row'>";
@@ -64,8 +63,6 @@ switch ($action) {
     $prompt .= '<tbody>';
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
-
-//        $prompt .= '<p>Name: ' . $row['nametext'] . '</p>';
       $prompt .= '<tr>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group input-group-default mb-6'>";
@@ -94,14 +91,12 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</div>';
 
-//    $prompt .= "</div";
-
-    $collection .= "<div class='col-sm-6'>";
+    $collection = "<div class='col-sm-6'>";
     $collection .= "<div id='accordion'>";
     $collection .= "<div class='card'>";
     $collection .= "<div class='card-header' id='headingThree'>";
     $collection .= "<h5 class='mb-0'>";
-    $collection .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>Prompt Table</button>";
+    $collection .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>Collection Table</button>";
     $collection .= "</h5>";
     $collection .= "</div>";
     $collection .= "<div id='collapseThree show' class='collapse show' aria-labelledby='headingThree' data-parent='#accordion'>";
