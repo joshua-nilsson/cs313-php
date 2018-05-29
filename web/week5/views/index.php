@@ -52,10 +52,9 @@ catch (PDOException $ex)
 
       while ($row = $statement->fetch(PDO::FETCH_ASSOC))
       {
+        echo 'ID: ' . $row['nameid'];
         echo 'NAME: ' . $row['nametext'];
       }
-
-
 
 //      $statement = $db->query('SELECT DISTINCT book FROM scriptures');
 //      echo'<tr>';
