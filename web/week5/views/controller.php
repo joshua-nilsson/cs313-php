@@ -39,18 +39,19 @@ switch ($action) {
 //      $row = $statement->fetch(PDO::FETCH_ASSOC)
 //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
 //   }
-    $prompt = "<table class='table'>";
-    $prompt .= "<thead id='head-dark' class='thead-dark'>";
-    $prompt .= '<tr>';
-    $prompt .= "<th scope='col'>PROMPT</th>";
-    $prompt .= "<th scope='col'>NAME</th>";
-    $prompt .= "<th scope='col'>CONTROLS</th>";
-    $prompt .= '</tr>';
-    $prompt .= '</thead>';
-    $prompt .= '<tbody>';
+
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
-      $prompt = '<tr>';
+      $prompt = "<table class='table'>";
+      $prompt .= "<thead id='head-dark' class='thead-dark'>";
+      $prompt .= '<tr>';
+      $prompt .= "<th scope='col'>PROMPT</th>";
+      $prompt .= "<th scope='col'>NAME</th>";
+      $prompt .= "<th scope='col'>CONTROLS</th>";
+      $prompt .= '</tr>';
+      $prompt .= '</thead>';
+      $prompt .= '<tbody>';
+      $prompt .= '<tr>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group input-group-default mb-6'>";
       $prompt .= "<div class='input-group-prepend'>";
