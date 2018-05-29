@@ -34,18 +34,13 @@ catch (PDOException $ex)
   <body>
     <header>
       <?php include '../modules/header.php';?>
-
-      <?php
-      if (isset($prompt))
-      {
-      echo $prompt;
-      }
-      ?>
     </header>
 
     <main>
       <?php include '../modules/example-config.php';?>
       <?php include '..modules/name-generation.php';?>
+
+      <?php if (isset($prompt)){echo $prompt;}?>
     </main>
 
     <footer>
