@@ -48,7 +48,7 @@ catch (PDOException $ex)
 //        echo '<br/>';
 //      }
 
-      $statement = $db->query('SELECT DISTINCT nametext FROM names');
+      $statement = $db->query('SELECT nameid, nametext FROM names');
 
       while ($row = $statement->fetch(PDO::FETCH_ASSOC))
       {
