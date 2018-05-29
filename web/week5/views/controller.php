@@ -43,8 +43,8 @@ switch ($action) {
     {
       $prompt = '<p>NAME: ' . $row['nametext'] . '</p>';
     }
-
-    header('Location: index.php');
+    include 'index.php';
+//    header('Location: index.php');
 //    exit;
     break;
 
