@@ -97,7 +97,7 @@
         </div>
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
           <div class="card-body">
-            <form>
+            <form action="../modules/name-generation.php" method="post">
               <div class="form-group">
                 <div class="row">
                   <div class="col-sm-3">
@@ -165,9 +165,6 @@
                   </div>
                 </div>
 
-
-
-
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-8">
@@ -184,7 +181,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

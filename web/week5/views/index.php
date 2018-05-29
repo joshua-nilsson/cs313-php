@@ -38,34 +38,7 @@ catch (PDOException $ex)
 
     <main>
       <?php include '../modules/example-config.php';?>
-
-      <?php
-
-//      foreach ($db->query('SELECT nameId, nameText FROM names') as $name)
-//      {
-//        echo 'ID: ' . $name['nameId'];
-//        echo 'NAME: ' . $name['nameText'];
-//        echo '<br/>';
-//      }
-
-      $statement = $db->query('SELECT nameid, nametext FROM names');
-
-      while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-      {
-        echo '<p>ID: ' . $row['nameid'] . '</p>';
-        echo '<p>NAME: ' . $row['nametext'] . '</p>';
-      }
-
-//      $statement = $db->query('SELECT DISTINCT book FROM scriptures');
-//      echo'<tr>';
-//      while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-//      {
-//        echo '<th><input type="checkbox" name="check[]" id="check" value="'. $row['book'] .'">'. $row['book'] .'</th><br>';
-//      }
-//      echo '</tr>';
-
-
-      ?>
+      <?php include '..modules/name-generation.php';?>
     </main>
 
     <footer>
