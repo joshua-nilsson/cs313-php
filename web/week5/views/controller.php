@@ -44,6 +44,15 @@ switch ($action) {
     $prompt = "<div class='container'>";
     $prompt .= "<div class='row'>";
     $prompt .= "<div class='col-sm-6'>";
+    $prompt .= "<div id='accordion'>";
+    $prompt .= "<div class='card'>";
+    $prompt .= "<div class='card-header' id='headingOne'>";
+    $prompt .= "<h5 class='mb-0'>";
+    $prompt .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne'>Example Table</button>";
+    $prompt .= "</h5>";
+    $prompt .= "</div>";
+    $prompt .= "<div id='collapseOne' class='collapse show' aria-labelledby='headingOne' data-parent='#accordion'>";
+    $prompt .= "<div class='card-body'>";
     $prompt .= "<table class='table'>";
     $prompt .= "<thead id='head-dark' class='thead-dark'>";
     $prompt .= '<tr>';
