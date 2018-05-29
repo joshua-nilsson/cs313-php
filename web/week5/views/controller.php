@@ -70,9 +70,9 @@ switch ($action) {
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '</tr>';
+      $prompt .= '</tbody>';
+      $prompt .= '</table>';
     }
-    $prompt .= '</tbody>';
-    $prompt .= '</table>';
 
     include 'index.php';
     break;
