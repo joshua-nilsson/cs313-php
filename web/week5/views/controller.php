@@ -40,7 +40,11 @@ switch ($action) {
 //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
 //   }
 //    $prompt = "<div>";
-    $prompt = "<table class='table'>";
+
+    $prompt = "<div class='container'>";
+    $prompt .= "<div class='row'>";
+    $prompt .= "<div class='col-sm-6'>";
+    $prompt .= "<table class='table'>";
     $prompt .= "<thead id='head-dark' class='thead-dark'>";
     $prompt .= '<tr>';
     $prompt .= "<th scope='col'>PROMPT</th>";
