@@ -141,6 +141,8 @@ switch ($action) {
     }
     $collection .= '</tbody>';
     $collection .= '</table>';
+    $collection .= '</div>';
+    $collection .= '</div>';
 
     include 'index.php';
     break;
