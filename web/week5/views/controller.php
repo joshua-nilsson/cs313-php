@@ -88,11 +88,11 @@ switch ($action) {
     }
     $prompt .= '</tbody>';
     $prompt .= '</table>';
-    $prompt .= '</div'>;
-    $prompt .= '</div'>;
-    $prompt .= '</div'>;
-    $prompt .= '</div'>;
-    $prompt .= '</div'>;
+    $prompt .= '</div>';
+    $prompt .= '</div>';
+    $prompt .= '</div>';
+    $prompt .= '</div>';
+    $prompt .= '</div>';
 
 //    $prompt .= "</div";
 
