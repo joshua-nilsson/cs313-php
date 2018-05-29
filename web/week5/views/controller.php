@@ -22,11 +22,6 @@ catch (PDOException $ex)
   die();
 }
 
-
-
-
-
-
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){
 $action = filter_input(INPUT_GET, 'action');
@@ -49,11 +44,13 @@ switch ($action) {
     header('Location: index.php');
 //    exit;
     break;
+
+  default:
+      include 'index.php';
     }
 //    else {
 //    $message = '<p class="alertMsg">* Sorry, but the category submission failed. Please try again.</p>';
 //    include '../view/new-cat.php';
 //    exit;
-}
 
 ?>
