@@ -34,6 +34,13 @@ catch (PDOException $ex)
   <body>
     <header>
       <?php include '../modules/header.php';?>
+
+      <?php
+      if (isset($prompt))
+      {
+      echo $prompt;
+      }
+      ?>
     </header>
 
     <main>

@@ -41,7 +41,7 @@ switch ($action) {
 //   }
     while ($row = $statement->fetch(PDO::FETCH_ASSOC))
     {
-      echo '<p>ID: ' . $row['nameid'] . '</p>';
+      $prompt = '<p>NAME: ' . $row['nametext'] . '</p>';
     }
 
     header('Location: index.php');
