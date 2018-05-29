@@ -41,6 +41,7 @@ catch (PDOException $ex)
       <?php include '..modules/name-generation.php';?>
 
       <?php if (isset($prompt)){echo $prompt;}?>
+      <?php if (isset($collection)){echo $collection;}?>
     </main>
 
     <footer>

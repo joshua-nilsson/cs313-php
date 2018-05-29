@@ -48,7 +48,7 @@ switch ($action) {
     $prompt .= "<div class='card'>";
     $prompt .= "<div class='card-header' id='headingThree'>";
     $prompt .= "<h5 class='mb-0'>";
-    $prompt .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>Example Table</button>";
+    $prompt .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>Prompt Table</button>";
     $prompt .= "</h5>";
     $prompt .= "</div>";
     $prompt .= "<div id='collapseThree show' class='collapse show' aria-labelledby='headingThree' data-parent='#accordion'>";
@@ -95,6 +95,52 @@ switch ($action) {
     $prompt .= '</div>';
 
 //    $prompt .= "</div";
+
+    $collection .= "<div class='col-sm-6'>";
+    $collection .= "<div id='accordion'>";
+    $collection .= "<div class='card'>";
+    $collection .= "<div class='card-header' id='headingThree'>";
+    $collection .= "<h5 class='mb-0'>";
+    $collection .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>Prompt Table</button>";
+    $collection .= "</h5>";
+    $collection .= "</div>";
+    $collection .= "<div id='collapseThree show' class='collapse show' aria-labelledby='headingThree' data-parent='#accordion'>";
+    $collection .= "<div class='card-body'>";
+    $collection .= "<table class='table'>";
+    $collection .= "<thead id='head-dark' class='thead-dark'>";
+    $collection .= '<tr>';
+    $collection .= "<th scope='col'>PROMPT</th>";
+    $collection .= "<th scope='col'>NAME</th>";
+    $collection .= "<th scope='col'>CONTROLS</th>";
+    $collection .= '</tr>';
+    $collection .= '</thead>';
+    $collection .= '<tbody>';
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+    {
+
+      //        $collection .= '<p>Name: ' . $row['nametext'] . '</p>';
+      $collection .= '<tr>';
+      $collection .= '<td>';
+      $collection .= "<div class='input-group input-group-default mb-6'>";
+      $collection .= "<div class='input-group-prepend'>";
+      $collection .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[nametext]</div>";
+      $collection .= '</div>';
+      $collection .= '</div>';
+      $collection .= '</td>';
+      $collection .= '<td>';
+      $collection .= "<div class='input-group-append'>";
+      $collection .= "<input type='text' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
+      $collection .= '</div>';
+      $collection .= '</td>';
+      $collection .= '<td>';
+      $collection .= "<div class='input-group-append'>";
+      $collection .= "<button class='btn btn-primary' type='button'>SUBMIT</button>";
+      $collection .= '</div>';
+      $collection .= '</td>';
+      $collection .= '</tr>';
+    }
+    $collection .= '</tbody>';
+    $collection .= '</table>';
 
     include 'index.php';
     break;
