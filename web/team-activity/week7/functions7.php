@@ -43,10 +43,10 @@ case 'register':
       $checkPassword = checkPassword($guestPassword);
 
       // Hash the Password
-      $hashedPassword = password_hash($guestPassword, PASSWORD_DEFAULT);
+    $hashedPassword = password_hash($checkPassword, PASSWORD_DEFAULT);
 
       // Register Guest
-      $regGuest = registerGuest($guestUsername, $guestPassword);
+    $regGuest = registerGuest($guestUsername, $hashedPassword);
 
       header('Location: login7.php');
       die();
