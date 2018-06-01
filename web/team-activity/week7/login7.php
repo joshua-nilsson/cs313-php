@@ -55,9 +55,9 @@ catch (PDOException $ex)
 
       <form method="post" action="">
         <label for="user">Username</label>
-        <input type="text" name="guestUsername" <?php if(isset($guestUsername)){echo "value='$guestUsername'";} ?> placeholder="Sherlock Holmes">
+        <input type="text" name="guestUsername" placeholder="Sherlock Holmes" autofocus>
         <label for="password">Password</label>
-        <input type="password" name="guestPassword" placeholder="FunkyChicken92!" autofocus>
+        <input type="password" name="guestPassword" placeholder="FunkyChicken92!">
         <input type="submit" value="LOGIN">
         <input type="hidden" name="action" value="login">
       </form>
