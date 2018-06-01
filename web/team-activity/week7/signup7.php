@@ -1,4 +1,4 @@
-<?php dbConnect(); ?>
+<!--<?php dbConnect(); ?>-->
 <!DOCTYPE HTML>
 <html lang="en-US">
   <head>
