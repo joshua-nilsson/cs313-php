@@ -37,7 +37,7 @@
         <input type="text" name="guestUsername" placeholder="Sherlock Holmes" autofocus>
         <label for="password">Password</label>
         <input type="password" name="guestPassword" placeholder="FunkyChicken92!">
-        <input type="submit" value="LOGIN">
+        <input type="submit" value="REGISTER">
         <input type="hidden" name="action" value="register">
       </form>
     </main>
