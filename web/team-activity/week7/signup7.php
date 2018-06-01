@@ -57,9 +57,9 @@ catch (PDOException $ex)
 
       <form method="post" action="functions7.php">
         <label for="user">Username</label>
-        <input type="text" name="guestUsername" placeholder="Sherlock Holmes" autofocus>
+        <input type="text" name="guestUsername" placeholder="Sherlock Holmes" autofocus required>
         <label for="password">Password</label>
-        <input type="password" name="guestPassword" placeholder="FunkyChicken92!">
+        <input type="password" name="guestPassword" placeholder="FunkyChicken92!" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character" required>
         <input type="submit" value="REGISTER">
         <input type="hidden" name="action" value="register">
       </form>
