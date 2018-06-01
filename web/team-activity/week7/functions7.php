@@ -1,5 +1,27 @@
 <?php
 
+session_start();
+
+try{
+  $dbUrl = getenv('DATABASE_URL');
+  $dbopts = parse_url($dbUrl);
+  $dbHost = $dbopts["host"];
+  $dbPort = $dbopts["port"];
+  $dbUser = $dbopts["user"];
+  $dbPassword = $dbopts["pass"];
+  if(!empty($dbopts["path"])){
+    $dbName = ltrim($dbopts["path"],'/');
+  }else{
+    $dbName = $dbase;
+  }
+  $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+}
+catch (PDOException $ex)
+{
+  echo 'Error!: ' . $ex->getMessage();
+  die();
+}
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){
 $action = filter_input(INPUT_GET, 'action');
@@ -37,31 +59,6 @@ default:
 
 }
 
-function dbConnect() {
-
- session_start();
-
- try{
-   $dbUrl = getenv('DATABASE_URL');
-   $dbopts = parse_url($dbUrl);
-   $dbHost = $dbopts["host"];
-   $dbPort = $dbopts["port"];
-   $dbUser = $dbopts["user"];
-   $dbPassword = $dbopts["pass"];
-   if(!empty($dbopts["path"])){
-     $dbName = ltrim($dbopts["path"],'/');
-   }else{
-     $dbName = $dbase;
-   }
-   $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
- }
- catch (PDOException $ex)
- {
-   echo 'Error!: ' . $ex->getMessage();
-   die();
- }
-}
-
 function checkPassword($guestPassword) {
   /* Check the password for a minimum of 8 characters,
   * at least one 1 capital letter, at least 1 number and
@@ -71,8 +68,27 @@ function checkPassword($guestPassword) {
 }
 
 function registerGuest($guestUsername, $guestPassword) {
-  // Create a connection object using the dbConnect() function
-  $db = dbConnect();
+  session_start();
+
+  try{
+    $dbUrl = getenv('DATABASE_URL');
+    $dbopts = parse_url($dbUrl);
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    if(!empty($dbopts["path"])){
+      $dbName = ltrim($dbopts["path"],'/');
+    }else{
+      $dbName = $dbase;
+    }
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  }
+  catch (PDOException $ex)
+  {
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+  }
 
   // Query - Username, Password into guests
   $sql = 'INSERT INTO guests (guestUsername, guestPassword) VALUES (:guestUsername, :guestPassword)';
