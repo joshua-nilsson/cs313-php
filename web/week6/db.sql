@@ -5,9 +5,7 @@ DROP TABLE IF EXISTS collection CASCADE;
 
 CREATE TABLE clients (
   clientId         SERIAL                  NOT NULL,
-  clientFirstname  VARCHAR(20)             NOT NULL,
-  clientLastname   VARCHAR(20)             NOT NULL,
-  clientEmail      VARCHAR(40)             NOT NULL,
+  clientUsername   VARCHAR(30)             NOT NULL,
   clientPassword   VARCHAR(255)            NOT NULL,
   CONSTRAINT       pk_client_id            PRIMARY KEY (clientId)
 );
@@ -18,7 +16,7 @@ CREATE TABLE names (
   CONSTRAINT       pk_name_id              PRIMARY KEY (nameId)
 );
 
-CREATE TABLE prompts (
+/*CREATE TABLE prompts (
   promptId         SERIAL                  NOT NULL,
   promptText       VARCHAR(50)             NOT NULL,
   clientId         INT                     NOT NULL,
@@ -26,16 +24,14 @@ CREATE TABLE prompts (
   CONSTRAINT       pk_prompt_id            PRIMARY KEY (promptId),
   CONSTRAINT       fk_prompts_client_id    FOREIGN KEY (clientId)      REFERENCES clients(clientId),
   CONSTRAINT       fk_prompts_name_id      FOREIGN KEY (nameId)        REFERENCES names(nameId)
-);
+);*/
 
 CREATE TABLE collection (
   collectionId     SERIAL                  NOT NULL,
   collectionText   VARCHAR(50)             NOT NULL,
   clientId         INT                     NOT NULL,
-  promptId         INT                     NOT NULL,
   CONSTRAINT       pk_collection_id        PRIMARY KEY (collectionId),
-  CONSTRAINT       fk_collection_client_id FOREIGN KEY (clientId)      REFERENCES clients(clientId),
-  CONSTRAINT       fk_collection_prompt_id FOREIGN KEY (promptId)      REFERENCES prompts(promptId)
+  CONSTRAINT       fk_collection_client_id FOREIGN KEY (clientId) REFERENCES clients(clientId)
 );
 
 INSERT INTO names (nameText)

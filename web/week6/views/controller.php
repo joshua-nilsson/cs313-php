@@ -171,7 +171,78 @@ switch ($action) {
 
     break;
 
+case 'register':
+  // Filter, Store Data into Variables
+    $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
+    $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
+
+    // Check for any missing data
+    if(empty($clientusername) || empty($clientpassword)) {
+      $msg = '<p>* No empty fields allowed.</p>';
+      include 'signup7.php';
+      exit; }
+
+    // Check Pattern of Password
+    $checkPassword = checkPassword($clientpassword);
+
+    // Hash the Password
+    $hashedPassword = password_hash($checkPassword, PASSWORD_DEFAULT);
+
+    // Register Client
+    $regClient = registerClient($clientusername, $hashedPassword);
+
+    header('Location: login.php');
+    die();
+    break;
+
   default:
     include 'index.php';
+}
+
+function checkPassword($clientpassword) {
+  /* Check the password for a minimum of 8 characters,
+  * at least one 1 capital letter, at least 1 number and
+  * at least 1 special character */
+  $pattern = '/^(?=.*[[:digit:]])(?=.*[[:punct:]])[[:print:]]{8,}$/';
+  return preg_match($pattern, $clientpassword);
+}
+
+function registerClient($clientusername, $clientpassword) {
+  session_start();
+
+  try{
+    $dbUrl = getenv('DATABASE_URL');
+    $dbopts = parse_url($dbUrl);
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    if(!empty($dbopts["path"])){
+      $dbName = ltrim($dbopts["path"],'/');
+    }else{
+      $dbName = $dbase;
+    }
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  }
+  catch (PDOException $ex)
+  {
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+  }
+
+  // Query - Username, Password into clients
+  $sql = 'INSERT INTO clients (clientusername, clientpassword) VALUES (:clientusername, :clientpassword)';
+
+  // Create the prepared statement using the database connection
+  $stmt = $db->prepare($sql);
+
+  /* The next four lines replace the placeholders in the SQL
+  * statement with the actual values in the variables
+  * and tells the database the type of data it is */
+  $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
+  $stmt->bindValue(':clientpassword', $clientpassword, PDO::PARAM_STR);
+
+  // Execute - Insert Username, Password into clients
+  $stmt->execute();
 }
 ?>
