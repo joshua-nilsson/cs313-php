@@ -147,7 +147,7 @@ switch ($action) {
     $collection .= '</form>';
     $collection .= '</div>';
 
-    include 'index.php';
+    include 'names.php';
     break;
 
   case 'insert':
