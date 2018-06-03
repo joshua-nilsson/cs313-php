@@ -171,7 +171,7 @@ switch ($action) {
 
     break;
 
-case 'register':
+  case 'register':
   // Filter, Store Data into Variables
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
@@ -179,7 +179,7 @@ case 'register':
     // Check for any missing data
     if(empty($clientusername) || empty($clientpassword)) {
       $msg = '<p>* No empty fields allowed.</p>';
-      include 'signup7.php';
+      include 'register.php';
       exit; }
 
     // Check Pattern of Password
@@ -193,6 +193,10 @@ case 'register':
 
     header('Location: login.php');
     die();
+    break;
+
+  case 'login':
+
     break;
 
   default:
