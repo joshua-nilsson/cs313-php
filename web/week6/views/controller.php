@@ -190,7 +190,7 @@ switch ($action) {
     try {
       $stmt->execute();
       $stmt->closeCursor();
-      include 'controller.php';
+      include 'index.php';
     } catch (PDOException $e) {
       echo $e->getMessage();
       exit;
