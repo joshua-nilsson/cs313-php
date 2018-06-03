@@ -159,6 +159,7 @@ switch ($action) {
     $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
     $stmt->execute();
     $stmt->closeCursor();
+    include 'index.php';
     break;
 
   case 'update':
