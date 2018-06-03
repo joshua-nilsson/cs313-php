@@ -38,6 +38,14 @@ catch (PDOException $ex)
 
     <main>
       <h1>Administration</h1>
+      <?php
+      if (isset($_SESSION['loggedin'])){
+
+      $welcomeName = $_SESSION['clientData']['clientusername'];
+
+      echo $welcomeName;
+      }
+      ?>
 
       <?php if (isset($msg)){ echo $msg;} ?>
 
