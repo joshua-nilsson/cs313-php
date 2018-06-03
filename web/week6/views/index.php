@@ -40,8 +40,7 @@ catch (PDOException $ex)
       <?php include '../modules/example-config.php';?>
       <?php include '..modules/name-generation.php';?>
 
-      <?php if (isset($prompt)){echo $prompt;}?>
-      <?php if (isset($collection)){echo $collection;}?>
+      <?php if (isset($prompt)){echo $prompt-collection;}?>
     </main>
 
     <footer>
