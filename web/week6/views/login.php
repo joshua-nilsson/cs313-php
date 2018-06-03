@@ -49,7 +49,7 @@ catch (PDOException $ex)
                 <input type="text" name="clientusername" class="form-control" placeholder="Sherlock Holmes" autofocus>
                 <label for="clientpassword">Password</label>
                 <input type="password" name="clientpassword" class="form-control" placeholder="FunkyChicken92!">
-                <input type="submit" value="LOGIN" class="btn btn-primary">
+                <input type="submit" value="LOGIN" id="log" class="btn btn-primary">
                 <input type="hidden" name="action" value="login">
               </div>
             </form>

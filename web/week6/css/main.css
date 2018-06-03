@@ -23,6 +23,6 @@ table > #head-dark {
   background-color: #444;
 }
 
-#how-many, #prompt {
+#how-many, #prompt, #reg, #log {
   margin-top: 15px;
 }
