@@ -172,23 +172,19 @@ switch ($action) {
     break;
 
   case 'register':
-  // Filter, Store Data into Variables
+
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
 
-    // Check for any missing data
     if(empty($clientusername) || empty($clientpassword)) {
       $msg = '<p>* No empty fields allowed.</p>';
       include 'register.php';
       exit; }
 
-    // Check Pattern of Password
     $checkPassword = checkPassword($clientpassword);
 
-    // Hash the Password
     $hashedPassword = password_hash($checkPassword, PASSWORD_DEFAULT);
 
-    // Register Client
     $regClient = registerClient($clientusername, $hashedPassword);
 
     header('Location: login.php');
@@ -196,38 +192,32 @@ switch ($action) {
     break;
 
   case 'login':
-    // Filter and store the data
+
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_EMAIL);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
 
     $checkpassword = checkPassword($clientpassword);
 
-    // Check for missing data
     if(empty($clientusername) || empty($checkpassword)) {
       $msg = '<p>* Please provide a username and password.</p>';
       include 'login.php';
       exit; }
 
-    // A valid password exists, proceed with the login process
-    // Query the client data based on the username
     $clientData = getClient($clientusername);
-    // Compare the password just submitted against
-    // the hashed password for the matching client
+
     $hashCheck = password_verify($checkpassword, $clientData['clientpassword']);
-    // If the hashes don't match create an error
-    // and return to the login view
+
     if (!$hashCheck) {
       $msg = '<p>* Please check your password and try again.</p>';
       include 'login.php';
       exit;
     }
-    // A valid user exists, log them in
+
     $_SESSION['loggedin'] = TRUE;
-    // Remove the password from the array
-    // the array_pop function removes the last
-    // element from an array
+
     array_pop($clientData);
-    // Store the array into the session
+
+    // clientData now part of the session - referencing CIT 336
     $_SESSION['clientData'] = $clientData;
 
     header('Location: account.php');
@@ -241,10 +231,9 @@ switch ($action) {
     break;
 
   case 'account':
-    // Initialized for access to client reviews
+
     $clientId = $_SESSION['clientData']['clientId'];
 
-    // If logged in, get the Client's reviews and build the list of reviews
     if ($_SESSION['loggedin']) {
       $collection = getClientCollection($clientId);
       $clientCollection = buildClientCollection($collection);
@@ -290,23 +279,16 @@ function registerClient($clientusername, $clientpassword) {
     die();
   }
 
-  // Query - Username, Password into clients
   $sql = 'INSERT INTO clients (clientusername, clientpassword) VALUES (:clientusername, :clientpassword)';
 
-  // Create the prepared statement using the database connection
   $stmt = $db->prepare($sql);
 
-  /* The next four lines replace the placeholders in the SQL
-  * statement with the actual values in the variables
-  * and tells the database the type of data it is */
   $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
   $stmt->bindValue(':clientpassword', $clientpassword, PDO::PARAM_STR);
 
-  // Execute - Insert Username, Password into clients
   $stmt->execute();
 }
 
-// Get client data based on username
 function getClient($clientusername){
   session_start();
 
@@ -331,6 +313,7 @@ function getClient($clientusername){
   }
 
   $sql = 'SELECT clientid, clientusername, clientpassword FROM clients WHERE clientusername = :clientusername';
+
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
   $stmt->execute();

@@ -13,7 +13,7 @@
                 echo "<a href='account.php' title='View Account'>Account</a>";
               }
               else {
-                echo "<a href='login.php' title='View Account'>Account</a>";
+                echo "<a href='register.php' title='Click to Register'>Register</a>";
               }
               ?>
             </a>
