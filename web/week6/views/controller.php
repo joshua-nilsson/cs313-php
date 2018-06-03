@@ -184,6 +184,14 @@ switch ($action) {
       include 'register.php';
       exit; }
 
+    $existingusername = checkExistingUsername($clientusername);
+
+    if($existingusername) {
+      $message = '<p>* That username already exists.</p>';
+      include 'register.php';
+      exit;
+    }
+
     $checkPassword = checkPassword($clientpassword);
 
     $hashedPassword = password_hash($checkPassword, PASSWORD_DEFAULT);
@@ -249,6 +257,28 @@ switch ($action) {
 
   default:
     include 'index.php';
+}
+
+function checkExistingUsername($clientusername) {
+  $db = acmeConnection();
+  $sql = 'SELECT clientusername FROM clients WHERE $clientusername = :$clientusername';
+
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':$clientusername', $clientusername, PDO::PARAM_STR);
+  $stmt->execute();
+
+  $match = $stmt->fetch(PDO::FETCH_NUM);
+
+  $stmt->closeCursor();
+
+  // is the email empty or not?
+  if(empty($match)){
+    // array empty
+    return 0;
+  } else {
+    // array not empty
+    return 1;
+  }
 }
 
 function checkPassword($clientpassword) {
