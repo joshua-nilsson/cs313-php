@@ -13,7 +13,7 @@
             <a href="login.php">
               <?php
               if (isset($_SESSION['loggedin'])) {
-                echo "<a href='/acme/accounts/?action=logout' title='Click to Logout'>Logout</a>";
+                echo "<a href='controller.php?action=logout' title='Click to Logout'>Logout</a>";
               }
               else {
                 echo "<a href='login.php'>Login</a>";
