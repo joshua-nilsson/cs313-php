@@ -96,7 +96,8 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</form>';
 
-    $collection = "<div id='collection' class='col-sm-6'>";
+    $collection = "<form action='controller.php' method='post'>";
+    $collection .= "<div id='collection' class='col-sm-6'>";
     $collection .= "<div id='accordion'>";
     $collection .= "<div class='card'>";
     $collection .= "<div class='card-header' id='headingThree'>";
@@ -143,6 +144,7 @@ switch ($action) {
     $collection .= '</tbody>';
     $collection .= '</table>';
     $collection .= '</div>';
+    $collection .= '</form>';
     $collection .= '</div>';
 
     include 'index.php';
