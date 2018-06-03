@@ -44,12 +44,14 @@ catch (PDOException $ex)
             <?php if (isset($msg)){ echo $msg;} ?>
 
             <form method="post" action="controller.php">
-              <label for="user">Username</label>
-              <input type="text" name="clientusername" placeholder="Sherlock Holmes" autofocus>
-              <label for="password">Password</label>
-              <input type="password" name="clientpassword" placeholder="FunkyChicken92!">
-              <input type="submit" value="LOGIN" class="btn btn-primary">
-              <input type="hidden" name="action" value="login">
+              <div class="form-group">
+                <label for="user">Username</label>
+                <input type="text" name="clientusername" placeholder="Sherlock Holmes" autofocus>
+                <label for="password">Password</label>
+                <input type="password" name="clientpassword" placeholder="FunkyChicken92!">
+                <input type="submit" value="LOGIN" class="btn btn-primary">
+                <input type="hidden" name="action" value="login">
+              </div>
             </form>
           </div>
         </div>

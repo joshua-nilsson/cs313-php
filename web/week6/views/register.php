@@ -40,7 +40,7 @@ catch (PDOException $ex)
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h1>User Sign-Up</h1>
+            <h1>User Registration</h1>
 
             <?php if (isset($msg)){ echo $msg;} ?>
 
