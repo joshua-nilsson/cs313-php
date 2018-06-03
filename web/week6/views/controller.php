@@ -375,7 +375,7 @@ function buildClientCollection($collection) {
   $clientCollection = "<ul>";
 
   foreach($collection as $collect) {
-    $clientCollection .= "<li>$collect[collectionText]</li>";
+    $clientCollection .= "<li>$collect[collectiontext]</li>";
   }
 
   $clientCollection .= "</ul>";

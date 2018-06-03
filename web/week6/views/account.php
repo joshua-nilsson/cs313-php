@@ -49,7 +49,7 @@ catch (PDOException $ex)
 
       <?php if (isset($msg)){ echo $msg;} ?>
 
-      <?php if (isset($prompt)){echo $collection;}?>
+      <?php if (isset($clientCollection)){echo $clientCollection;}?>
     </main>
 
     <footer>
