@@ -172,6 +172,6 @@ switch ($action) {
     break;
 
   default:
-    include 'index.php';
+    include 'admin.php';
 }
 ?>
