@@ -26,3 +26,7 @@ table > #head-dark {
 #how-many, #prompt {
   margin-top: 15px;
 }
+
+.fas {
+  margin-right: 5px;
+}
