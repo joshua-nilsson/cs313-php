@@ -81,7 +81,7 @@ switch ($action) {
       $prompt .= '</td>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group-append'>";
-      $prompt .= "<a class='btn btn-primary' title='Click to Submit'>SUBMIT</i></a>";
+      $prompt .= "<a href='controller.php?action='insert' class='btn btn-primary' title='Click to Submit'>SUBMIT</i></a>";
       $prompt .= "<input type='hidden' name='action' value='insert'>";
       $prompt .= '</div>';
       $prompt .= '</td>';
