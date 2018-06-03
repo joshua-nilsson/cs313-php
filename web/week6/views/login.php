@@ -27,28 +27,14 @@ catch (PDOException $ex)
     <meta charset="utf-8">
     <title>User Login</title>
     <meta name="description" content="User Login">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-      label, input {
-        display: block;
-      }
-
-      label, input:first-of-type {
-        margin-bottom: 5px;
-      }
-
-      label {
-        font-weight: bold;
-        font-size: 150%;
-      }
-
-      input[type="submit"] {
-        margin-top: 10px;
-      }
-    </style>
+    <?php include '../modules/head.php';?>
   </head>
 
   <body>
+    <header>
+      <?php include '../modules/header.php';?>
+    </header>
+
     <main>
       <h1>User Login</h1>
 
@@ -63,5 +49,10 @@ catch (PDOException $ex)
         <input type="hidden" name="action" value="login">
       </form>
     </main>
+
+    <footer>
+      <?php include '../modules/footer.php';?>
+    </footer>
+    <?php include '../modules/scripts.php';?>
   </body>
 </html>
