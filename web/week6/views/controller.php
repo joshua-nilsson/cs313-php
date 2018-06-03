@@ -153,17 +153,17 @@ switch ($action) {
   case 'insert':
     $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING);
 
-    echo "<p>Hello</p>";
+    echo "<p>" . $collectiontext . "</p>";
 
     if(empty($collectiontext)) {
       $msg = '<p>* Please enter a name before submission.</p>';
       include 'index.php';
       exit; }
 
-//    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
+    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
 
-    $sql = 'INSERT INTO collection (collectionId, collectionText, clientId)
-      VALUES  (:collectionId, :collectiontext, :clientId)';
+//    $sql = 'INSERT INTO collection (collectionId, collectionText, clientId)
+//      VALUES  (:collectionId, :collectiontext, :clientId)';
 
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
