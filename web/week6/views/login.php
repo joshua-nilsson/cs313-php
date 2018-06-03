@@ -36,19 +36,19 @@ catch (PDOException $ex)
     </header>
 
     <main>
-      <h1>User Login</h1>
-
-      <?php if (isset($msg)){ echo $msg;} ?>
-
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
+            <h1>User Login</h1>
+
+            <?php if (isset($msg)){ echo $msg;} ?>
+
             <form method="post" action="controller.php">
               <label for="user">Username</label>
               <input type="text" name="clientusername" placeholder="Sherlock Holmes" autofocus>
               <label for="password">Password</label>
               <input type="password" name="clientpassword" placeholder="FunkyChicken92!">
-              <input type="submit" value="LOGIN">
+              <input type="submit" value="LOGIN" class="btn btn-primary">
               <input type="hidden" name="action" value="login">
             </form>
           </div>
