@@ -354,9 +354,7 @@ function getClientCollection($clientId) {
     die();
   }
 
-//  $sql = 'SELECT collection.collectionid, collection.collectiontext FROM collection INNER JOIN clients ON collection.clientid = clients.clientid WHERE collection.clientid = :clientId ORDER BY collection.collectionid DESC';
-
-  $sql = 'SELECT * FROM collection';
+  $sql = 'SELECT collection.collectionid, collection.collectiontext FROM collection INNER JOIN clients ON collection.clientid = clients.clientid WHERE collection.clientid = :clientId ORDER BY collection.collectionid DESC';
 
   $stmt = $db->prepare($sql);
 

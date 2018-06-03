@@ -26,8 +26,8 @@ catch (PDOException $ex)
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>Administration</title>
-    <meta name="description" content="Administration">
+    <title>Account</title>
+    <meta name="description" content="Account">
     <?php include '../modules/head.php';?>
   </head>
 
