@@ -75,7 +75,7 @@ switch ($action) {
       $prompt .= '</td>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group-append'>";
-      $prompt .= "<input type='text' name='collectionText' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
+      $prompt .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '<td>';
@@ -147,16 +147,16 @@ switch ($action) {
     break;
 
   case 'insert':
-    $collectionText = filter_input(INPUT_POST, 'collectionText', FILTER_SANITIZE_STRING);
+    $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING);
 
-    if(empty($collectionText)) {
+    if(empty($collectiontext)) {
       $msg = '<p>* Please enter a name before submission.</p>';
       include 'index.php';
       exit; }
 
-    $sql = 'INSERT INTO collection (collectionText) VALUES (:collectionText)';
+    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':collectionText', $collectionText, PDO::PARAM_STR);
+    $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
     $stmt->execute();
     $stmt->closeCursor();
     break;
