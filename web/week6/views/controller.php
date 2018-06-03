@@ -153,7 +153,7 @@ switch ($action) {
     }
     // If the user didn't fill anything out, display an error and exit:
     if(count($nonEmpty) === 0) {
-      $msg = '<p>* Please enter a name before submission.</p>';
+      $msg = "<div class='alert alert-danger' role='alert'>* Please enter a name before submission.</div>";
       include 'index.php';
       exit;
     }
@@ -204,7 +204,8 @@ switch ($action) {
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
     if(empty($clientusername) || empty($clientpassword)) {
-      $msg = '<p>* No empty fields allowed.</p>';
+      $msg = "<div class='alert alert-danger' role='alert'>* No empty fields allowed.</div>";
+
       include 'register.php';
       exit; }
     $checkPassword = checkPassword($clientpassword);
@@ -218,13 +219,13 @@ switch ($action) {
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
     $checkpassword = checkPassword($clientpassword);
     if(empty($clientusername) || empty($checkpassword)) {
-      $msg = '<p>* Please provide a username and password.</p>';
+      $msg = "<div class='alert alert-danger' role='alert'>* Please provide a username and password.</div>";
       include 'login.php';
       exit; }
     $clientData = getClient($clientusername);
     $hashCheck = password_verify($checkpassword, $clientData['clientpassword']);
     if (!$hashCheck) {
-      $msg = '<p>* Please check your credentials and try again.</p>';
+      $msg = "<div class='alert alert-danger' role='alert'>* Please check your credentials and try again.</div>";
       include 'login.php';
       exit;
     }
