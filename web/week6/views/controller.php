@@ -144,8 +144,7 @@ switch ($action) {
     $collection .= '</div>';
     $collection .= '</div>';
 
-    header('Location: index.php');
-//    include 'index.php';
+    include 'index.php';
     break;
 
   case 'insert':
