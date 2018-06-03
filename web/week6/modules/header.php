@@ -6,11 +6,21 @@
           <li class="nav-item"><a href="index.php">Fantasy Name Generator</a></li>
         </div>
         <div class="col-sm-1">
-          <li class="nav-item"><a href="account.php">Account</a></li>
+          <li class="nav-item">
+            <a href="account.php">
+              <?php
+              if (isset($_SESSION['loggedin'])) {
+                echo "<a href='account.php' title='View Account'>Account</a>";
+              }
+              else {
+                echo "<a href='login.php' title='View Account'>Account</a>";
+              }
+              ?>
+            </a>
+          </li>
         </div>
         <div class="col-sm-1">
           <li class="nav-item">
-            <a href="login.php">
               <?php
               if (isset($_SESSION['loggedin'])) {
                 echo "<a href='controller.php?action=logout' title='Click to Logout'>Logout</a>";
@@ -19,7 +29,6 @@
                 echo "<a href='login.php'>Login</a>";
               }
               ?>
-            </a>
           </li>
         </div>
       </div>
