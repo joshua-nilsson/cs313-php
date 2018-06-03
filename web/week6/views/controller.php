@@ -33,7 +33,8 @@ switch ($action) {
 
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
 
-    $statement = $db->query('SELECT nameid, nametext FROM names');
+    $statement1 = $db->query('SELECT nameid, nametext FROM names');
+    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
 
     //    for ($i=0;i<=$nameInput;i++) {
     //      $row = $statement->fetch(PDO::FETCH_ASSOC)
@@ -63,7 +64,7 @@ switch ($action) {
     $prompt .= '</tr>';
     $prompt .= '</thead>';
     $prompt .= '<tbody>';
-    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+    while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
     {
       $prompt .= '<tr>';
       $prompt .= '<td>';
@@ -114,7 +115,7 @@ switch ($action) {
     $collection .= '</tr>';
     $collection .= '</thead>';
     $collection .= '<tbody>';
-    while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+    while ($row = $statement2->fetch(PDO::FETCH_ASSOC))
     {
 
       //        $collection .= '<p>Name: ' . $row['nametext'] . '</p>';
@@ -122,7 +123,7 @@ switch ($action) {
       $collection .= '<td>';
       $collection .= "<div class='input-group input-group-default mb-6'>";
       $collection .= "<div class='input-group-prepend'>";
-      $collection .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[nametext]</div>";
+      $collection .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[collectiontext]</div>";
       $collection .= '</div>';
       $collection .= '</div>';
       $collection .= '</td>';
@@ -143,9 +144,8 @@ switch ($action) {
     $collection .= '</div>';
     $collection .= '</div>';
 
-    echo 'Hello';
-
-    include 'index.php';
+    header('Location: index.php');
+//    include 'index.php';
     break;
 
   case 'insert':
