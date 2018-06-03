@@ -126,7 +126,7 @@ switch ($action) {
       $collection .= '<td>';
       $collection .= "<div class='input-group-append'>";
       $collection .= "<button type='button' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></i></button>";
-      $collection .= "<button type='button' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>";
+      $collection .= "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>";
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</tr>';
