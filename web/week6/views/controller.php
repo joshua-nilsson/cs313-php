@@ -154,11 +154,12 @@ switch ($action) {
       include 'index.php';
       exit; }
 
-    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
-    $stmt->execute();
-    $stmt->closeCursor();
+    $statement = $db->query('INSERT INTO collection (collectiontext) VALUES (:collectiontext)');
+//    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
+//    $stmt = $db->prepare($sql);
+//    $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
+//    $stmt->execute();
+//    $stmt->closeCursor();
     include 'index.php';
     break;
 
