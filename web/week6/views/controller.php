@@ -196,7 +196,64 @@ switch ($action) {
     break;
 
   case 'login':
+    // Filter and store the data
+    $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_EMAIL);
+    $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
 
+    $checkPassword = checkPassword($clientpassword);
+
+    // Check for missing data
+    if(empty($clientusername) || empty($checkPassword)) {
+      $message = '<p>* Please provide a username and password.</p>';
+      include '../view/login.php';
+      exit; }
+
+    // A valid password exists, proceed with the login process
+    // Query the client data based on the email address
+    $clientData = getClient($clientusername);
+    // Compare the password just submitted against
+    // the hashed password for the matching client
+    $hashCheck = password_verify($clientPassword, $clientData['clientpassword']);
+    // If the hashes don't match create an error
+    // and return to the login view
+    if (!$hashCheck) {
+      $msg = '<p>* Please check your password and try again.</p>';
+      include '../view/login.php';
+      exit;
+    }
+    // A valid user exists, log them in
+    $_SESSION['loggedin'] = TRUE;
+    // Remove the password from the array
+    // the array_pop function removes the last
+    // element from an array
+    array_pop($clientData);
+    // Store the array into the session
+    $_SESSION['clientData'] = $clientData;
+
+    // Send them to the admin view
+    header('Location: ../accounts/?action=admin');
+    exit;
+    break;
+
+  case 'logout':
+
+    session_destroy();
+    header('Location: index.php');
+    break;
+
+  case 'admin':
+    // Initialized for access to client reviews
+    $clientId = $_SESSION['clientData']['clientId'];
+
+    // If logged in, get the Client's reviews and build the list of reviews
+    if ($_SESSION['loggedin']) {
+      $collection = getClientCollection($clientId);
+      $clientCollection = buildClientCollection($collection);
+    }
+    else {
+      header('Location: index.php');
+    }
+    include 'admin.php';
     break;
 
   default:
@@ -248,5 +305,38 @@ function registerClient($clientusername, $clientpassword) {
 
   // Execute - Insert Username, Password into clients
   $stmt->execute();
+}
+
+// Get client data based on username
+function getClient($clientusername){
+  session_start();
+
+  try{
+    $dbUrl = getenv('DATABASE_URL');
+    $dbopts = parse_url($dbUrl);
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    if(!empty($dbopts["path"])){
+      $dbName = ltrim($dbopts["path"],'/');
+    }else{
+      $dbName = $dbase;
+    }
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  }
+  catch (PDOException $ex)
+  {
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+  }
+
+  $sql = 'SELECT clientid, clientusername, clientpassword FROM clients WHERE clientusername = :clientusername';
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
+  $stmt->execute();
+  $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $clientData;
 }
 ?>
