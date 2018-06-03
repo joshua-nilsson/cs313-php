@@ -230,9 +230,7 @@ switch ($action) {
     // Store the array into the session
     $_SESSION['clientData'] = $clientData;
 
-    // Send them to the admin view
-//    header('Location: ../accounts/?action=admin');
-    header('Location: admin.php');
+    header('Location: account.php');
     exit;
     break;
 
@@ -242,7 +240,7 @@ switch ($action) {
     header('Location: index.php');
     break;
 
-  case 'admin':
+  case 'account':
     // Initialized for access to client reviews
     $clientId = $_SESSION['clientData']['clientId'];
 
@@ -254,7 +252,7 @@ switch ($action) {
     else {
       header('Location: index.php');
     }
-    include 'admin.php';
+    include 'account.php';
     break;
 
   default:

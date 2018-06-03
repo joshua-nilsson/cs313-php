@@ -37,13 +37,13 @@ catch (PDOException $ex)
     </header>
 
     <main>
-      <h1>Administration</h1>
+      <h1>Account Overview</h1>
       <?php
       if (isset($_SESSION['loggedin'])){
 
-      $welcomeName = $_SESSION['clientData']['clientusername'];
+      $username = $_SESSION['clientData']['clientusername'];
 
-      echo "<h2>Welcome " . $welcomeName . "</h2>";
+        echo "<h2>Welcome " . $username . "</h2>";
       }
       ?>
 
