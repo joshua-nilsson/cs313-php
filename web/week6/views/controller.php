@@ -158,9 +158,10 @@ switch ($action) {
       exit;
     }
     // debugging and such
-    echo "<pre>";
-    var_dump($nonEmpty);
-    echo "</pre>";
+//    echo "<pre>";
+//    var_dump($nonEmpty);
+//    echo "</pre>";
+
     // This is the start of a SQL query. We don't know how many things the user
     // filled out, so we need to build off of this one set at a time.
     $sql = 'INSERT INTO collection (collectiontext, clientid) VALUES ';
@@ -189,7 +190,7 @@ switch ($action) {
     try {
       $stmt->execute();
       $stmt->closeCursor();
-      include 'index.php';
+      include 'controller.php';
     } catch (PDOException $e) {
       echo $e->getMessage();
       exit;
