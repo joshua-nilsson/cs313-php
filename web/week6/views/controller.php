@@ -190,7 +190,7 @@ switch ($action) {
     try {
       $stmt->execute();
       $stmt->closeCursor();
-      include 'index.php';
+      header('Location: controller.php?action=generate');
     } catch (PDOException $e) {
       echo $e->getMessage();
       exit;
