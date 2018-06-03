@@ -1,7 +1,6 @@
 <?php
 //Start the session
 session_start();
-
 try{
   $dbUrl = getenv('DATABASE_URL');
   $dbopts = parse_url($dbUrl);
@@ -21,28 +20,22 @@ catch (PDOException $ex)
   echo 'Error!: ' . $ex->getMessage();
   die();
 }
-
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){
   $action = filter_input(INPUT_GET, 'action');
 }
-
 switch ($action) {
-
   case 'generate':
-
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
-
     $statement1 = $db->query('SELECT nameid, nametext FROM names');
     $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
-
     //    for ($i=0;i<=$nameInput;i++) {
     //      $row = $statement->fetch(PDO::FETCH_ASSOC)
     //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
     //   }
-
     $prompt = "<div id='prompt' class='container'>";
     $prompt .= "<form action='controller.php' method='post'>";
+    $prompt .= "<input type='hidden' name='action' value='insert'>";
     $prompt .= "<div class='form-group'>";
     $prompt .= "<div class='row'>";
     $prompt .= "<div class='col-sm-6'>";
@@ -76,7 +69,7 @@ switch ($action) {
       $prompt .= '</td>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group-append'>";
-      $prompt .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
+      $prompt .= "<input type='text' name='collectiontext[]' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '<td>';
@@ -93,9 +86,7 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</div>';
     $prompt .= '</div>';
-    $prompt .= "<input type='hidden' name='action' value='insert'>";
     $prompt .= '</form>';
-
     $collection = "<div id='collection' class='col-sm-6'>";
     $collection .= "<form action='controller.php' method='post'>";
     $collection .= "<div id='accordion'>";
@@ -118,7 +109,6 @@ switch ($action) {
     $collection .= '<tbody>';
     while ($row = $statement2->fetch(PDO::FETCH_ASSOC))
     {
-
       //        $collection .= '<p>Name: ' . $row['nametext'] . '</p>';
       $collection .= '<tr>';
       $collection .= '<td>';
@@ -146,103 +136,110 @@ switch ($action) {
     $collection .= '</div>';
     $collection .= '</form>';
     $collection .= '</div>';
-
     include 'index.php';
     break;
-
   case 'insert':
-    $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING);
-
-    echo "<p>" . $collectiontext . "</p>";
-
-    if(empty($collectiontext)) {
+    // Get all the collection text items. Note FILTER_REQUIRE_ARRAY here-
+    // see line 80's name attribute for one slight change you need to make to
+    // your <input> tags to make this work
+    $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY);
+    // Filter all the collection text items down to only the ones the user
+    // actually filled out- the ones that aren't empty, in other words
+    $nonEmpty = array();
+    foreach($collectiontext as $input) {
+      if (!empty($input)) {
+        array_push($nonEmpty, $input);
+      }
+    }
+    // If the user didn't fill anything out, display an error and exit:
+    if(count($nonEmpty) === 0) {
       $msg = '<p>* Please enter a name before submission.</p>';
       include 'index.php';
-      exit; }
-
-    $sql = 'INSERT INTO collection (collectiontext, clientId) VALUES (:collectiontext, 1)';
-
-//    $sql = 'INSERT INTO collection (collectionId, collectionText, clientId)
-//      VALUES  (:collectionId, :collectiontext, :clientId)';
-
+      exit;
+    }
+    // debugging and such
+    echo "<pre>";
+    var_dump($nonEmpty);
+    echo "</pre>";
+    // This is the start of a SQL query. We don't know how many things the user
+    // filled out, so we need to build off of this one set at a time.
+    $sql = 'INSERT INTO collection (collectiontext, clientid) VALUES ';
+    // This array will hold placeholders for all the tuples- or (id, text) pairs
+    // that we want to insert into the database. We use an array instead of direct
+    // concatenation because PHP's implode() makes it easier not to worry about
+    // the exact placement of commas between our different tuples.
+    $values = array();
+    foreach($nonEmpty as $index => $input) {
+      array_push($values, "(:collectiontext{$index}, :clientid{$index})");
+    }
+    // Now we pad our original query with the imploded values tuples:
+    $sql .= implode(', ', $values);
+    // Debugging purposes:
+    echo '<pre>' . $sql . '</pre>';
+    // Now we can prepare the query and get a PDOStatement object:
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
-    $stmt->execute();
-    $stmt->closeCursor();
-    include 'index.php';
+    // Now we iterate over all the filled-out inputs and bind them to the
+    // placeholders we made earlier:
+    foreach($nonEmpty as $index => $input) {
+      $stmt->bindValue(":collectiontext{$index}", $input, PDO::PARAM_STR);
+      // Hardcoded clientId for now:
+      $stmt->bindValue(":clientid{$index}", 1, PDO::PARAM_INT);
+    }
+    // And then we can execute the query (try/catch for more debugging info):
+    try {
+      $stmt->execute();
+      $stmt->closeCursor();
+      include 'index.php';
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+      exit;
+    }
     break;
-
   case 'update':
-
     break;
-
   case 'delete':
-
     break;
-
   case 'register':
-
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
-
     if(empty($clientusername) || empty($clientpassword)) {
       $msg = '<p>* No empty fields allowed.</p>';
       include 'register.php';
       exit; }
-
     $checkPassword = checkPassword($clientpassword);
-
     $hashedPassword = password_hash($checkPassword, PASSWORD_DEFAULT);
-
     $regClient = registerClient($clientusername, $hashedPassword);
-
     header('Location: login.php');
     die();
     break;
-
   case 'login':
-
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_EMAIL);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
-
     $checkpassword = checkPassword($clientpassword);
-
     if(empty($clientusername) || empty($checkpassword)) {
       $msg = '<p>* Please provide a username and password.</p>';
       include 'login.php';
       exit; }
-
     $clientData = getClient($clientusername);
-
     $hashCheck = password_verify($checkpassword, $clientData['clientpassword']);
-
     if (!$hashCheck) {
       $msg = '<p>* Please check your credentials and try again.</p>';
       include 'login.php';
       exit;
     }
-
     $_SESSION['loggedin'] = TRUE;
-
     array_pop($clientData);
-
     // clientData now part of the session - referencing CIT 336
     $_SESSION['clientData'] = $clientData;
-
     header('Location: account.php');
     exit;
     break;
-
   case 'logout':
-
     session_destroy();
     header('Location: index.php');
     break;
-
   case 'account':
-
     $clientId = $_SESSION['clientData']['clientId'];
-
     if ($_SESSION['loggedin']) {
       $collection = getClientCollection($clientId);
       $clientCollection = buildClientCollection($collection);
@@ -252,11 +249,9 @@ switch ($action) {
     }
     include 'account.php';
     break;
-
   default:
     include 'index.php';
 }
-
 function checkPassword($clientpassword) {
   /* Check the password for a minimum of 8 characters,
   * at least one 1 capital letter, at least 1 number and
@@ -264,10 +259,8 @@ function checkPassword($clientpassword) {
   $pattern = '/^(?=.*[[:digit:]])(?=.*[[:punct:]])[[:print:]]{8,}$/';
   return preg_match($pattern, $clientpassword);
 }
-
 function registerClient($clientusername, $clientpassword) {
   session_start();
-
   try{
     $dbUrl = getenv('DATABASE_URL');
     $dbopts = parse_url($dbUrl);
@@ -287,20 +280,14 @@ function registerClient($clientusername, $clientpassword) {
     echo 'Error!: ' . $ex->getMessage();
     die();
   }
-
   $sql = 'INSERT INTO clients (clientusername, clientpassword) VALUES (:clientusername, :clientpassword)';
-
   $stmt = $db->prepare($sql);
-
   $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
   $stmt->bindValue(':clientpassword', $clientpassword, PDO::PARAM_STR);
-
   $stmt->execute();
 }
-
 function getClient($clientusername){
   session_start();
-
   try{
     $dbUrl = getenv('DATABASE_URL');
     $dbopts = parse_url($dbUrl);
@@ -320,9 +307,7 @@ function getClient($clientusername){
     echo 'Error!: ' . $ex->getMessage();
     die();
   }
-
   $sql = 'SELECT clientid, clientusername, clientpassword FROM clients WHERE clientusername = :clientusername';
-
   $stmt = $db->prepare($sql);
   $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
   $stmt->execute();
@@ -330,10 +315,8 @@ function getClient($clientusername){
   $stmt->closeCursor();
   return $clientData;
 }
-
 function getClientCollection($clientId) {
   session_start();
-
   try{
     $dbUrl = getenv('DATABASE_URL');
     $dbopts = parse_url($dbUrl);
@@ -353,33 +336,20 @@ function getClientCollection($clientId) {
     echo 'Error!: ' . $ex->getMessage();
     die();
   }
-
   $sql = 'SELECT collection.collectionid, collection.collectiontext FROM collection INNER JOIN clients ON collection.clientid = clients.clientid WHERE collection.clientid = :clientId ORDER BY collection.collectionid DESC';
-
   $stmt = $db->prepare($sql);
-
   $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
-
   $stmt->execute();
-
   $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
   $stmt->closeCursor();
-
   return $collection;
 }
-
-
 function buildClientCollection($collection) {
-
   $clientCollection = "<ul>";
-
   foreach($collection as $collect) {
     $clientCollection .= "<li>$collect[collectiontext]</li>";
   }
-
   $clientCollection .= "</ul>";
-
   return $clientCollection;
 }
 ?>
