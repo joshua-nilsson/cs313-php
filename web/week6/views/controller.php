@@ -134,8 +134,8 @@ switch ($action) {
       $collection .= '</td>';
       $collection .= '<td>';
       $collection .= "<div class='input-group-append'>";
-      $collection .= "<button type='button' class='btn btn-warning'><i class='fas fa-edit fa-2x'></i></button>";
-      $collection .= "<button type='button' class='btn btn-danger'><i class='fas fa-trash-alt fa-2x'></i></button>";
+      $collection .= "<button type='button' class='btn btn-warning'><i class='fas fa-sync-alt fa-1x'></i></i></button>";
+      $collection .= "<button type='button' class='btn btn-danger'><i class='fas fa-trash-alt fa-1x'></i></button>";
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</tr>';
