@@ -231,7 +231,8 @@ switch ($action) {
     $_SESSION['clientData'] = $clientData;
 
     // Send them to the admin view
-    header('Location: ../accounts/?action=admin');
+//    header('Location: ../accounts/?action=admin');
+    header('Location: index.php');
     exit;
     break;
 
