@@ -26,3 +26,8 @@ table > #head-dark {
 #how-many, #prompt {
   margin-top: 15px;
 }
+
+i {
+  display: inline-block;
+  margin-right: 1em;
+}
