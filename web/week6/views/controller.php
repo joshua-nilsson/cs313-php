@@ -153,6 +153,8 @@ switch ($action) {
   case 'insert':
     $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING);
 
+    echo "<p>Hello</p>";
+
     if(empty($collectiontext)) {
       $msg = '<p>* Please enter a name before submission.</p>';
       include 'index.php';
@@ -211,7 +213,7 @@ switch ($action) {
     $hashCheck = password_verify($checkpassword, $clientData['clientpassword']);
 
     if (!$hashCheck) {
-      $msg = '<p>* Please check your password and try again.</p>';
+      $msg = '<p>* Please check your credentials and try again.</p>';
       include 'login.php';
       exit;
     }
