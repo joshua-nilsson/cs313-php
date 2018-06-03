@@ -200,20 +200,20 @@ switch ($action) {
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_EMAIL);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
 
-    $checkPassword = checkPassword($clientpassword);
+    $checkpassword = checkPassword($clientpassword);
 
     // Check for missing data
-    if(empty($clientusername) || empty($checkPassword)) {
+    if(empty($clientusername) || empty($checkpassword)) {
       $msg = '<p>* Please provide a username and password.</p>';
       include 'login.php';
       exit; }
 
     // A valid password exists, proceed with the login process
-    // Query the client data based on the email address
+    // Query the client data based on the username
     $clientData = getClient($clientusername);
     // Compare the password just submitted against
     // the hashed password for the matching client
-    $hashCheck = password_verify($clientpassword, $clientData['clientpassword']);
+    $hashCheck = password_verify($checkpassword, $clientData['clientpassword']);
     // If the hashes don't match create an error
     // and return to the login view
     if (!$hashCheck) {
@@ -232,7 +232,7 @@ switch ($action) {
 
     // Send them to the admin view
 //    header('Location: ../accounts/?action=admin');
-    header('Location: index.php');
+    header('Location: admin.php');
     exit;
     break;
 
