@@ -21,7 +21,7 @@
         ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Click to Return"><i class="fas fa-ban fa-2x"></i></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Click to Cancel"><i class="fas fa-ban fa-2x"></i></button>
         <button type="button" class="btn btn-danger" title="Click to Delete"><i class='fas fa-trash-alt fa-fw fa-2x'></i></button>
       </div>
     </div>
