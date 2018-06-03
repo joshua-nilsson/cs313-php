@@ -81,7 +81,7 @@ switch ($action) {
       $prompt .= '</td>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group-append'>";
-      $prompt .= "<button class='btn btn-primary' type='button'>SUBMIT</i></button>";
+      $prompt .= "<button class='btn btn-primary' type='button' title='Click to Submit'>SUBMIT</i></button>";
       $prompt .= "<input type='hidden' name='action' value='insert'>";
       $prompt .= '</div>';
       $prompt .= '</td>';
