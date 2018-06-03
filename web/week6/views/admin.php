@@ -43,7 +43,7 @@ catch (PDOException $ex)
 
       $welcomeName = $_SESSION['clientData']['clientusername'];
 
-      echo $welcomeName;
+      echo "<h2>Welcome " . $welcomeName . "</h2>";
       }
       ?>
 
