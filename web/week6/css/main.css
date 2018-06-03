@@ -29,7 +29,11 @@ table > #head-dark {
   margin-top: 15px;
 }
 
+.fa-angle-double-right {
+  padding-right: 20px;
+}
+
 .fa-edit {
   color: white;
-  margin-right: 10px;
+  padding-right: 10px;
 }
