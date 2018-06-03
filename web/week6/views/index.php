@@ -27,7 +27,7 @@ catch (PDOException $ex)
   <head>
     <meta charset="utf-8">
     <title>Fantasy Name Generator</title>
-    <meta name="description" content="">
+    <meta name="description" content="Fantasy Name Generator">
     <?php include '../modules/head.php';?>
   </head>
 

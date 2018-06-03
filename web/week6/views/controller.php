@@ -81,6 +81,7 @@ switch ($action) {
       $prompt .= '<td>';
       $prompt .= "<div class='input-group-append'>";
       $prompt .= "<button class='btn btn-primary' type='button'>SUBMIT</button>";
+      $prompt .= "<input type='hidden' name='action' value='insert'>";
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '</tr>';
@@ -92,7 +93,6 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</div>';
     $prompt .= '</div>';
-    $prompt .= "<input type='hidden' name='action' value='insert'>";
     $prompt .= '</form>';
 
     $collection = "<div id='collection' class='col-sm-6'>";
