@@ -143,6 +143,8 @@ switch ($action) {
     $collection .= '</div>';
     $collection .= '</div>';
 
+    echo 'Hello';
+
     include 'index.php';
     break;
 
@@ -154,12 +156,11 @@ switch ($action) {
       include 'index.php';
       exit; }
 
-    $statement = $db->query('INSERT INTO collection (collectiontext) VALUES (:collectiontext)');
-//    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
-//    $stmt = $db->prepare($sql);
-//    $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
-//    $stmt->execute();
-//    $stmt->closeCursor();
+    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
+    $stmt->execute();
+    $stmt->closeCursor();
     include 'index.php';
     break;
 
@@ -172,6 +173,6 @@ switch ($action) {
     break;
 
   default:
-    include 'admin.php';
+    include 'index.php';
 }
 ?>
