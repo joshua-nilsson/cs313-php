@@ -94,7 +94,6 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= "<input type='hidden' name='action' value='insert'>";
     $prompt .= '</form>';
-    $prompt .= '</div>';
 
     $collection = "<div id='collection' class='col-sm-6'>";
     $collection .= "<div id='accordion'>";
