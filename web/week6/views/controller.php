@@ -204,8 +204,8 @@ switch ($action) {
 
     // Check for missing data
     if(empty($clientusername) || empty($checkPassword)) {
-      $message = '<p>* Please provide a username and password.</p>';
-      include '../view/login.php';
+      $msg = '<p>* Please provide a username and password.</p>';
+      include 'login.php';
       exit; }
 
     // A valid password exists, proceed with the login process
