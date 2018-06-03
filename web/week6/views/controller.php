@@ -160,7 +160,7 @@ switch ($action) {
       include 'index.php';
       exit; }
 
-    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
+    $sql = 'INSERT INTO collection (collectiontext, clientId) VALUES (:collectiontext, 1)';
 
 //    $sql = 'INSERT INTO collection (collectionId, collectionText, clientId)
 //      VALUES  (:collectionId, :collectiontext, :clientId)';
