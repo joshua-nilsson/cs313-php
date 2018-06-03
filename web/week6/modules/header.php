@@ -6,7 +6,19 @@
           <li class="nav-item"><a href="index.php">Fantasy Name Generator</a></li>
         </div>
         <div class="col-sm-1">
-          <li class="nav-item"><a href="account.php">Account</a></li>
+          <li class="nav-item">
+            <a href="account.php">
+              <?php
+              if (isset($_SESSION['loggedin'])){
+
+                $username = $_SESSION['clientData']['clientusername'];
+
+                echo $username . "'s Account";
+              }
+              else { echo "Account";}
+              ?>
+            </a>
+          </li>
         </div>
         <div class="col-sm-1">
           <li class="nav-item"><a href="login.php">Login</a></li>
