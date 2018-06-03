@@ -34,6 +34,9 @@ CREATE TABLE collection (
   CONSTRAINT       fk_collection_client_id FOREIGN KEY (clientId) REFERENCES clients(clientId)
 );
 
+INSERT INTO collection (collectionId, collectionText, clientId)
+VALUES  (1, 'Quimeleo', 1);
+
 INSERT INTO names (nameText)
 VALUES  ('Quimel'),
         ('Akime'),
