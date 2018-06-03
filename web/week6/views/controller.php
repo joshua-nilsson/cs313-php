@@ -160,7 +160,11 @@ switch ($action) {
       include 'index.php';
       exit; }
 
-    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
+//    $sql = 'INSERT INTO collection (collectiontext) VALUES (:collectiontext)';
+
+    $sql = 'INSERT INTO collection (collectionId, collectionText, clientId)
+      VALUES  (:collectionId, :collectiontext, :clientId)';
+
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
     $stmt->execute();
