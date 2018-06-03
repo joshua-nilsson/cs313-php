@@ -40,14 +40,20 @@ catch (PDOException $ex)
 
       <?php if (isset($msg)){ echo $msg;} ?>
 
-      <form method="post" action="controller.php">
-        <label for="user">Username</label>
-        <input type="text" name="clientusername" placeholder="Sherlock Holmes" autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="clientpassword" placeholder="FunkyChicken92!">
-        <input type="submit" value="LOGIN">
-        <input type="hidden" name="action" value="login">
-      </form>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <form method="post" action="controller.php">
+              <label for="user">Username</label>
+              <input type="text" name="clientusername" placeholder="Sherlock Holmes" autofocus>
+              <label for="password">Password</label>
+              <input type="password" name="clientpassword" placeholder="FunkyChicken92!">
+              <input type="submit" value="LOGIN">
+              <input type="hidden" name="action" value="login">
+            </form>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>

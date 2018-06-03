@@ -41,16 +41,22 @@ catch (PDOException $ex)
 
       <?php if (isset($msg)){ echo $msg;} ?>
 
-      <form method="post" action="controller.php">
-        <div class="form-group">
-          <label for="clientusername">Username</label>
-          <input type="text" name="clientusername" class="form-control" placeholder="Sherlock Holmes" autofocus required>
-          <label for="clientpassword">Password</label>
-          <input type="password" name="clientpassword" class="form-control" placeholder="FunkyChicken92!" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character" required>
-          <input type="submit" value="REGISTER">
-          <input type="hidden" name="action" value="register">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <form method="post" action="controller.php">
+              <div class="form-group">
+                <label for="clientusername">Username</label>
+                <input type="text" name="clientusername" class="form-control" placeholder="Sherlock Holmes" autofocus required>
+                <label for="clientpassword">Password</label>
+                <input type="password" name="clientpassword" class="form-control" placeholder="FunkyChicken92!" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character" required>
+                <input type="submit" value="REGISTER">
+                <input type="hidden" name="action" value="register">
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
+      </div>
     </main>
 
     <footer>
