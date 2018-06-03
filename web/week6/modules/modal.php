@@ -20,7 +20,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="far fa-arrow-alt-circle-left fa-2x"></i></button>
-        <button type="button" class="btn btn-danger"><i class='fas fa-trash-alt fa-fw fa-2x'></i></button>
+        <button type="button" class="btn btn-danger"><i class='fas fa-trash-alt fa-fw fa-1.5x'></i></button>
       </div>
     </div>
   </div>
