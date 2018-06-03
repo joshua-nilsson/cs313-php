@@ -28,5 +28,6 @@ table > #head-dark {
 }
 
 i {
-  justify-content: space-between;
+  display: inline;
+  margin-right: 10px;
 }
