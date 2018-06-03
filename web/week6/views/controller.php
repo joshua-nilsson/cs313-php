@@ -330,4 +330,56 @@ function getClient($clientusername){
   $stmt->closeCursor();
   return $clientData;
 }
+
+function getClientCollection($clientId) {
+  session_start();
+
+  try{
+    $dbUrl = getenv('DATABASE_URL');
+    $dbopts = parse_url($dbUrl);
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    if(!empty($dbopts["path"])){
+      $dbName = ltrim($dbopts["path"],'/');
+    }else{
+      $dbName = $dbase;
+    }
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  }
+  catch (PDOException $ex)
+  {
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+  }
+
+  $sql = 'SELECT collection.collectionid, collection.collectiontext FROM collection INNER JOIN clients ON collection.clientid = clients.clientid WHERE collection.clientid = :clientId ORDER BY collection.collectionid DESC';
+
+  $stmt = $db->prepare($sql);
+
+  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+
+  $stmt->execute();
+
+  $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+  $stmt->closeCursor();
+
+  return $collection;
+}
+
+
+function buildClientCollection($collection) {
+
+  $clientCollection = "<ul>";
+
+  foreach($collection as $collect) {
+    $clientCollection .= "<li>$collect[collectiontext]</li>";
+  }
+
+  $clientCollection .= "</ul>";
+
+  return $clientCollection;
+}
 ?>
