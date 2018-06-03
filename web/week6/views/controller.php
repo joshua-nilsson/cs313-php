@@ -81,7 +81,7 @@ switch ($action) {
       $prompt .= '</td>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group-append'>";
-      $prompt .= "<button class='btn btn-primary' type='button'><i class='fas fa-angle-double-right fa-2x'></i></button>";
+      $prompt .= "<button class='btn btn-primary' type='button'>SUBMIT</i></button>";
       $prompt .= "<input type='hidden' name='action' value='insert'>";
       $prompt .= '</div>';
       $prompt .= '</td>';
@@ -134,8 +134,8 @@ switch ($action) {
       $collection .= '</td>';
       $collection .= '<td>';
       $collection .= "<div class='input-group-append'>";
-      $collection .= "<button type='button' class='btn btn-warning'><i class='fas fa-sync-alt fa-1x'></i></i></button>";
-      $collection .= "<button type='button' class='btn btn-danger'><i class='fas fa-trash-alt fa-1x'></i></button>";
+      $collection .= "<button type='button' class='btn btn-warning'><i class='fas fa-sync-alt fa-fw'></i></i></button>";
+      $collection .= "<button type='button' class='btn btn-danger'><i class='fas fa-trash-alt fa-fw'></i></button>";
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</tr>';
