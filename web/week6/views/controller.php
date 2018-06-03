@@ -218,7 +218,7 @@ switch ($action) {
     // and return to the login view
     if (!$hashCheck) {
       $msg = '<p>* Please check your password and try again.</p>';
-      include '../view/login.php';
+      include 'login.php';
       exit;
     }
     // A valid user exists, log them in
