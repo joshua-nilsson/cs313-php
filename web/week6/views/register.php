@@ -49,8 +49,6 @@ catch (PDOException $ex)
         <input type="submit" value="REGISTER">
         <input type="hidden" name="action" value="register">
       </form>
-
-      <?php if (isset($prompt)){echo $collection;}?>
     </main>
 
     <footer>
