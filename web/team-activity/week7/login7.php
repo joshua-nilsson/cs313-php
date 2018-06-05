@@ -52,12 +52,14 @@ catch (PDOException $ex)
     <main>
       <h1>User Login</h1>
 
+      <?php if (isset($msg)){ echo $msg;} ?>
+
       <form method="post" action="functions7.php">
         <label for="user">Username</label>
         <input type="text" name="guestUsername" placeholder="Sherlock Holmes" autofocus>
         <label for="password">Password</label>
         <input type="password" name="guestPassword" placeholder="FunkyChicken92!">
-        <input type="submit" value="LOGIN">
+        <input type="submit" name="action" value="LOGIN">
         <input type="hidden" name="action" value="login">
       </form>
     </main>
