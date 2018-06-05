@@ -38,7 +38,6 @@ catch (PDOException $ex)
       }
 
       label {
-        display: block;
         font-weight: bold;
         font-size: 150%;
       }

@@ -43,13 +43,36 @@ case 'register':
       $checkPassword = checkPassword($guestPassword);
 
       // Hash the Password
-    $hashedPassword = password_hash($checkPassword, PASSWORD_DEFAULT);
+      $hashedPassword = password_hash($checkPassword, PASSWORD_DEFAULT);
 
       // Register Guest
-    $regGuest = registerGuest($guestUsername, $hashedPassword);
+      $regGuest = registerGuest($guestUsername, $hashedPassword);
 
       header('Location: login7.php');
       die();
+      break;
+
+case 'login':
+      $guestUsername = filter_input(INPUT_POST, 'guestUsername', FILTER_SANITIZE_STRING);
+      $guestPassword = filter_input(INPUT_POST, 'guestPassword', FILTER_SANITIZE_STRING);
+      $checkpassword = checkPassword($guestPassword);
+      if(empty($guestUsername) || empty($guestPassword)) {
+        $msg = "<div class='alert alert-danger' role='alert'>* Please provide a username and password.</div>";
+        include 'login.php';
+        exit; }
+      $guestData = getClient($guestUsername);
+      $hashCheck = password_verify($checkpassword, $guestData['guestPassword']);
+      if (!$hashCheck) {
+        $msg = "<div class='alert alert-danger' role='alert'>* Please check your credentials and try again.</div>";
+        include 'login.php';
+        exit;
+      }
+      $_SESSION['loggedin'] = TRUE;
+      array_pop($guestData);
+      // clientData now part of the session - referencing CIT 336
+      $_SESSION['guestData'] = $guestData;
+      header('Location: welcome.php');
+      exit;
       break;
 
 default:
@@ -103,5 +126,35 @@ function registerGuest($guestUsername, $guestPassword) {
 
   // Execute - Insert Username, Password into guests
   $stmt->execute();
+}
+
+function getClient($guestUsername){
+  session_start();
+  try{
+    $dbUrl = getenv('DATABASE_URL');
+    $dbopts = parse_url($dbUrl);
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    if(!empty($dbopts["path"])){
+      $dbName = ltrim($dbopts["path"],'/');
+    }else{
+      $dbName = $dbase;
+    }
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  }
+  catch (PDOException $ex)
+  {
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+  }
+  $sql = 'SELECT guestid, guestusername, guestpassword FROM guests WHERE guestusername = :guestusername';
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':guestusername', $guestUsername, PDO::PARAM_STR);
+  $stmt->execute();
+  $guestData = $stmt->fetch(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $guestData;
 }
 ?>
