@@ -58,7 +58,7 @@ case 'login':
       $checkpassword = checkPassword($guestPassword);
       if(empty($guestUsername) || empty($guestPassword)) {
         $msg = "<div class='alert alert-danger' role='alert'>* Please provide a username and password.</div>";
-        include 'welcome.php';
+        include 'login.php';
         exit; }
       $guestData = getClient($guestUsername);
       $hashCheck = password_verify($checkpassword, $guestData['guestPassword']);

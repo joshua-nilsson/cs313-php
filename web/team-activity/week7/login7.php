@@ -52,7 +52,7 @@ catch (PDOException $ex)
     <main>
       <h1>User Login</h1>
 
-      <form method="post" action="">
+      <form method="post" action="functions7.php">
         <label for="user">Username</label>
         <input type="text" name="guestUsername" placeholder="Sherlock Holmes" autofocus>
         <label for="password">Password</label>
