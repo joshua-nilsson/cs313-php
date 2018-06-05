@@ -149,9 +149,9 @@ function getClient($guestUsername){
     echo 'Error!: ' . $ex->getMessage();
     die();
   }
-  $sql = 'SELECT guestid, guestusername, guestpassword FROM guests WHERE guestusername = :guestusername';
+  $sql = 'SELECT guestid, guestUsername, guestPassword FROM guests WHERE guestUsername = :guestUsername';
   $stmt = $db->prepare($sql);
-  $stmt->bindValue(':guestusername', $guestUsername, PDO::PARAM_STR);
+  $stmt->bindValue(':guestUsername', $guestUsername, PDO::PARAM_STR);
   $stmt->execute();
   $guestData = $stmt->fetch(PDO::FETCH_ASSOC);
   $stmt->closeCursor();
