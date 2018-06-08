@@ -52,8 +52,7 @@ catch (PDOException $ex)
                 <input type="password" name="clientpassword" class="form-control" placeholder="FunkyChicken92!" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character" required>
                 <input type="submit" value="REGISTER" id="reg" class="btn btn-primary">
                 <input type="hidden" name="action" value="register">
-                <p>OR</p>
-                <a href="login.php" class="btn btn-secondary">Login</a>
+                <p id="linkBtn"><a href="login.php" class="btn btn-secondary">LOGIN</a></p>
               </div>
             </form>
           </div>
