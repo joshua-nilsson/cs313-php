@@ -27,14 +27,18 @@ if ($action == NULL){
 switch ($action) {
   case 'generate':
 
-    $username = $_SESSION['clientData']['clientusername'];
+    $clientusername = $_SESSION['clientData']['clientusername'];
 
-    echo "<h2>Welcome " . $username . "</h2>";
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
     $statement1 = $db->query('SELECT nameid, nametext FROM names');
-//    $statement2 = $db->query('SELECT collectiontext FROM collection
-//      WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = '.$username.')');
-    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
+    $statement2 = $db->query('SELECT collectiontext FROM collection
+      WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = :clientusername)');
+
+    $stmt = $db->prepare($statement2);
+    $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
+    $stmt->execute();
+    $stmt->closeCursor();
+//    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
     //    for ($i=0;i<=$nameInput;i++) {
     //      $row = $statement->fetch(PDO::FETCH_ASSOC)
     //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
