@@ -29,7 +29,7 @@ switch ($action) {
 
     $num = filter_input(INPUT_POST, 'nameInput');
     if ($num === NULL){
-      $num = $_SESSION['num']
+      $num = $_SESSION['num'];
     } else {
       $_SESSION['num'] = $num;
     }
