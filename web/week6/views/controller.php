@@ -152,6 +152,8 @@ switch ($action) {
 
     $id = $_SESSION['clientData']['clientid'];
 
+    echo "<p>".$id."</p>";
+
     // Get all the collection text items. Note FILTER_REQUIRE_ARRAY here-
     // see line 80's name attribute for one slight change you need to make to
     // your <input> tags to make this work
