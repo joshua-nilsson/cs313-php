@@ -355,12 +355,12 @@ function clientCollection($clientId) {
   $id = $_SESSION['clientData']['clientid'];
   $collection = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
 
-  $clientCollection = "<ul>";
+  $clientCollection = '<ul>';
   while ($row = $collection->fetch(PDO::FETCH_ASSOC))
   {
     $clientCollection .= "<li>$row[collectiontext]</li>";
   }
-  $clientCollection .= "</ul>";
+  $clientCollection .= '</ul>';
   return $clientCollection;
 }
 //  $stmt = $db->prepare($sql);
