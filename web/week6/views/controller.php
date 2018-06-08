@@ -150,7 +150,7 @@ switch ($action) {
     break;
   case 'insert':
 
-    $id = $_SESSION['clientData']['clientid'];
+    $id = $_SESSION['clientData']['clientId'];
 
     echo "<p>".$id."</p>";
 
