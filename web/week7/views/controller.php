@@ -27,13 +27,13 @@ if ($action == NULL){
 switch ($action) {
   case 'generate':
 
-//    $_SESSION['num'] = $_POST['nameInput'];
-//    $num = $_SESSION['num'];
+    $_SESSION['num'] = $_POST['nameInput'];
+    $num = $_SESSION['num'];
 
     $id = $_SESSION['clientData']['clientid'];
 
 //    $statement1 = $db->query('SELECT nameid, nametext FROM names');
-    $statement1 = $db->query('SELECT * FROM names ORDER BY RANDOM() LIMIT 3');
+    $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
 
     $statement2 = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
 //    $statement2 = $db->prepare($stmt);
