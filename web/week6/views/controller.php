@@ -27,12 +27,12 @@ if ($action == NULL){
 switch ($action) {
   case 'generate':
 
-    $clientusername = $_SESSION['clientData']['clientusername'];
+    $id = $_SESSION['clientData']['clientid'];
 
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
     $statement1 = $db->query('SELECT nameid, nametext FROM names');
 
-    $stmt = $db->query("SELECT collectiontext FROM collection WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = '$clientusername')");
+    $stmt = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
 //    $statement2 = $db->prepare($stmt);
 //    $statement2->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
 //    $statement2->execute();
