@@ -26,6 +26,16 @@ if ($action == NULL){
 }
 switch ($action) {
   case 'generate':
+//     CONNOR MESSAGE
+//    if (!isset($_SESSION['names']) || count($_SESSION['names']) === 0) {
+//      $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
+//
+//      $_SESSION['names'] = array();
+//
+//      foreach ($statement1->fetch() as $data) {
+//        array_push($_SESSION['names'], $data['nametext']);
+//      }
+//    }
 
     $num = filter_input(INPUT_POST, 'nameInput');
     if ($num === NULL){
@@ -37,7 +47,28 @@ switch ($action) {
     $id = $_SESSION['clientData']['clientid'];
 
 //    $statement1 = $db->query('SELECT nameid, nametext FROM names');
-    $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
+    $statement1 = $db->query("
+    WITH random_names AS (
+      SELECT
+      nametext
+      FROM names
+      WHERE LENGTH(nametext) >= 10
+      ORDER BY random()
+      LIMIT '$num'
+    ), split_names AS (
+      SELECT
+      ROW_NUMBER() OVER ()                                    AS shared_key,
+      LEFT(nametext, 5)                                       AS first_half,
+      LEFT(INITCAP(RIGHT(nametext, LENGTH(nametext) - 5)), 5) AS second_half
+      FROM random_names
+      ORDER BY random()
+    )
+      SELECT
+      CONCAT(front.first_half, back.second_half) AS name
+      FROM split_names AS front
+      INNER JOIN split_names AS back
+      ON front.shared_key = back.shared_key");
+//    $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
 
     $statement2 = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
 //    $statement2 = $db->prepare($stmt);
@@ -73,6 +104,11 @@ switch ($action) {
     $prompt .= '</tr>';
     $prompt .= '</thead>';
     $prompt .= '<tbody>';
+
+    // Connor message - replace while loop with foreach
+//    foreach ($_SESSION['names'] as $name) {
+//      echo $name . '<br>';
+//    }
     while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
     {
       $prompt .= '<tr>';
