@@ -34,8 +34,18 @@ CREATE TABLE collection (
   CONSTRAINT       fk_collection_client_id FOREIGN KEY (clientId) REFERENCES clients(clientId)
 );
 
-INSERT INTO collection (collectionId, collectionText, clientId)
-VALUES  (1, 'Quimeleo', 1);
+SELECT collectiontext FROM collection
+WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = 'steve');
+
+-- If User Is Logged In
+/*
+INSERT INTO collection (collectionText, clientId)
+VALUES  ($collectionText, (SELECT clientId FROM clients WHERE clientUsername = $clientUsername));
+*/
+INSERT INTO collection (collectionText, clientId)
+VALUES  ('twotwotwo', 4),
+        ('twotwo', 4),
+        ('two', 4);
 
 INSERT INTO names (nameText)
 VALUES  ('Quimel'),

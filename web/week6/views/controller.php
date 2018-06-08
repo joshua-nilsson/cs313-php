@@ -215,7 +215,7 @@ switch ($action) {
     die();
     break;
   case 'login':
-    $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_EMAIL);
+    $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
     $clientpassword = filter_input(INPUT_POST, 'clientpassword', FILTER_SANITIZE_STRING);
     $checkpassword = checkPassword($clientpassword);
     if(empty($clientusername) || empty($checkpassword)) {
