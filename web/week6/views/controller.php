@@ -27,7 +27,7 @@ if ($action == NULL){
 switch ($action) {
   case 'generate':
 
-    $num = $_POST['nameOutput'];
+    $num = $_POST['nameInput'];
     $id = $_SESSION['clientData']['clientid'];
 
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
