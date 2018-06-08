@@ -18,11 +18,10 @@ a:active {
   color: #cbced3;
 }
 
-
 table > #head-dark {
   background-color: #444;
 }
 
-#how-many, #prompt, #reg, #log {
+#how-many, #prompt, #reg, #log, p a {
   margin-top: 15px;
 }
