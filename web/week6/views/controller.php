@@ -30,7 +30,8 @@ switch ($action) {
     $id = $_SESSION['clientData']['clientid'];
 
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
-    $statement1 = $db->query('SELECT nameid, nametext FROM names');
+//    $statement1 = $db->query('SELECT nameid, nametext FROM names');
+    $statement1 = $db->query('SELECT * FROM names ORDER BY RANDOM() LIMIT 10');
 
     $statement2 = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
 //    $statement2 = $db->prepare($stmt);
