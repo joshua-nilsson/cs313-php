@@ -257,8 +257,7 @@ switch ($action) {
   case 'account':
     $clientId = $_SESSION['clientData']['clientId'];
     if ($_SESSION['loggedin']) {
-      $collection = getClientCollection($clientId);
-      $clientCollection = buildClientCollection($collection);
+      $clientCollection = clientCollection($clientId);
     }
     else {
       header('Location: index.php');
@@ -331,7 +330,7 @@ function getClient($clientusername){
   $stmt->closeCursor();
   return $clientData;
 }
-function getClientCollection($clientId) {
+function clientCollection($clientId) {
   session_start();
   try{
     $dbUrl = getenv('DATABASE_URL');
@@ -355,20 +354,20 @@ function getClientCollection($clientId) {
 
   $id = $_SESSION['clientData']['clientid'];
   $collection = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
-//  $stmt = $db->prepare($sql);
-//  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
-//  $stmt->execute();
-//  $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//  $stmt->closeCursor();
-  return $collection;
-}
-function buildClientCollection($collection) {
+
   $clientCollection = "<ul>";
-  while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
+  while ($row = $collection->fetch(PDO::FETCH_ASSOC))
   {
     $clientCollection .= "<li>$row[collectiontext]</li>";
   }
   $clientCollection .= "</ul>";
   return $clientCollection;
 }
+//  $stmt = $db->prepare($sql);
+//  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+//  $stmt->execute();
+//  $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//  $stmt->closeCursor();
+//  return $collection;
+//}
 ?>
