@@ -1,0 +1,27 @@
+nav {
+  background-color: #444;
+  padding: 30px 0px;
+  margin-bottom: 30px;
+}
+
+nav a {
+  color: white;
+  font-weight: bolder;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
+a:active {
+  color: #cbced3;
+}
+
+table > #head-dark {
+  background-color: #444;
+}
+
+#how-many, #prompt, #reg, #log, p a {
+  margin-top: 15px;
+}
