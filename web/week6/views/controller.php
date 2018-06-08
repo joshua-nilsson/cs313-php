@@ -352,9 +352,11 @@ function getClientCollection($clientId) {
     echo 'Error!: ' . $ex->getMessage();
     die();
   }
-  $sql = 'SELECT collection.collectionid, collection.collectiontext FROM collection INNER JOIN clients ON collection.clientid = clients.clientid WHERE collection.clientid = :clientId ORDER BY collection.collectionid DESC';
+
+  $id = $_SESSION['clientData']['clientid'];
+  $sql = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
   $stmt = $db->prepare($sql);
-  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+//  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
   $stmt->execute();
   $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $stmt->closeCursor();
