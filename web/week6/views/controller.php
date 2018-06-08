@@ -150,7 +150,7 @@ switch ($action) {
     break;
   case 'insert':
 
-    $clientusername = $_SESSION['clientData']['clientusername'];
+    $id = $_SESSION['clientData']['clientid'];
 
     // Get all the collection text items. Note FILTER_REQUIRE_ARRAY here-
     // see line 80's name attribute for one slight change you need to make to
@@ -198,7 +198,7 @@ switch ($action) {
     foreach($nonEmpty as $index => $input) {
       $stmt->bindValue(":collectiontext{$index}", $input, PDO::PARAM_STR);
       // Hardcoded clientId for now:
-      $stmt->bindValue(":clientid{$index}", $clientusername, PDO::PARAM_INT);
+      $stmt->bindValue(":clientid{$index}", $id, PDO::PARAM_INT);
     }
     // And then we can execute the query (try/catch for more debugging info):
     try {
