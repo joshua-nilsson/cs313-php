@@ -31,12 +31,14 @@ switch ($action) {
 
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
     $statement1 = $db->query('SELECT nameid, nametext FROM names');
-    $stmt = $db->query('SELECT collectiontext FROM collection WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = :clientusername)');
+    $statement2 = $db->query('SELECT collectiontext FROM collection WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = "$clientusername")');
 
-    $statement2 = $db->prepare($stmt);
-    $statement2->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
-    $statement2->execute();
-    $statement2->closeCursor();
+//    $stmt = $db->query('SELECT collectiontext FROM collection WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = :clientusername)');
+//    $statement2 = $db->prepare($stmt);
+//    $statement2->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
+//    $statement2->execute();
+//    $statement2->closeCursor();
+
 //    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
     //    for ($i=0;i<=$nameInput;i++) {
     //      $row = $statement->fetch(PDO::FETCH_ASSOC)
