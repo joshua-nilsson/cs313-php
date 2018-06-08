@@ -354,18 +354,19 @@ function getClientCollection($clientId) {
   }
 
   $id = $_SESSION['clientData']['clientid'];
-  $sql = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
-  $stmt = $db->prepare($sql);
+  $collection = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
+//  $stmt = $db->prepare($sql);
 //  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
-  $stmt->execute();
-  $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  $stmt->closeCursor();
+//  $stmt->execute();
+//  $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//  $stmt->closeCursor();
   return $collection;
 }
 function buildClientCollection($collection) {
   $clientCollection = "<ul>";
-  foreach($collection as $collect) {
-    $clientCollection .= "<li>$collect[collectiontext]</li>";
+  while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
+  {
+    $clientCollection .= "<li>$row[collectiontext]</li>";
   }
   $clientCollection .= "</ul>";
   return $clientCollection;
