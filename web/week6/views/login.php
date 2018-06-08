@@ -51,8 +51,8 @@ catch (PDOException $ex)
                 <input type="password" name="clientpassword" class="form-control" placeholder="FunkyChicken92!">
                 <input type="submit" value="LOGIN" id="log" class="btn btn-primary">
                 <input type="hidden" name="action" value="login">
-                <p>OR</p>
-                <a href="register.php" class="btn btn-secondary">Register</a>
+                <span>OR</span>
+                <a href="register.php" class="btn btn-secondary">REGISTER</a>
               </div>
             </form>
           </div>
