@@ -150,9 +150,7 @@ switch ($action) {
     break;
   case 'insert':
 
-    $id = $_SESSION['clientData']['clientId'];
-
-    echo "<p>".$id."</p>";
+    $id = $_SESSION['clientData']['clientid'];
 
     // Get all the collection text items. Note FILTER_REQUIRE_ARRAY here-
     // see line 80's name attribute for one slight change you need to make to

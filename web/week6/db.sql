@@ -39,11 +39,12 @@ CREATE TABLE collection (
 INSERT INTO collection (collectionText, clientId)
 VALUES  ($collectionText, (SELECT clientId FROM clients WHERE clientUsername = $clientUsername));
 */
+/*
 INSERT INTO collection (collectionText, clientId)
 VALUES  ('twotwotwo', 4),
         ('twotwo', 4),
         ('two', 4);
-
+*/
 INSERT INTO names (nameText)
 VALUES  ('Quimel'),
         ('Akime'),
