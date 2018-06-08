@@ -45,6 +45,10 @@ VALUES  ('twotwotwo', 4),
         ('twotwo', 4),
         ('two', 4);
 */
+
+SELECT collectiontext FROM collection
+WHERE clientId = (SELECT clientId FROM clients WHERE clientUsername = "Joshua2");
+
 INSERT INTO names (nameText)
 VALUES  ('Quimel'),
         ('Akime'),
