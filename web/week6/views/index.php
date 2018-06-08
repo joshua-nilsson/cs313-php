@@ -23,7 +23,7 @@ catch (PDOException $ex)
 }
 
 if (!$_SESSION['loggedin']) {
-  header('Location: register.php');
+  header('Location: login.php');
 }
 ?>
 <!DOCTYPE HTML>
