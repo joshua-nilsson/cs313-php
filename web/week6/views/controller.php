@@ -31,7 +31,7 @@ switch ($action) {
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
     $statement1 = $db->query('SELECT nameid, nametext FROM names');
     $statement2 = $db->query('SELECT collectiontext FROM collection
-      WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = $username)');
+      WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = '.$username.')');
 //    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
     //    for ($i=0;i<=$nameInput;i++) {
     //      $row = $statement->fetch(PDO::FETCH_ASSOC)
