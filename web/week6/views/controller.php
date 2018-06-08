@@ -28,14 +28,15 @@ switch ($action) {
   case 'generate':
     //    $nameInput = filter_input(INPUT_POST, 'nameInput', FILTER_SANITIZE_STRING);
     $statement1 = $db->query('SELECT nameid, nametext FROM names');
-    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
+    $statement2 = $db->query('SELECT collectiontext FROM collection
+      WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = ' . $_SESSION['clientData']['clientUsername']')');
+//    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
     //    for ($i=0;i<=$nameInput;i++) {
     //      $row = $statement->fetch(PDO::FETCH_ASSOC)
     //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
     //   }
     $prompt = "<div id='prompt' class='container'>";
     $prompt .= "<form action='controller.php' method='post'>";
-    $prompt .= "<input type='hidden' name='action' value='insert'>";
     $prompt .= "<div class='form-group'>";
     $prompt .= "<div class='row'>";
     $prompt .= "<div class='col-sm-6'>";
@@ -86,6 +87,7 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</div>';
     $prompt .= '</div>';
+    $prompt .= "<input type='hidden' name='action' value='insert'>"; // possibly wrong place?
     $prompt .= '</form>';
     $collection = "<div id='collection' class='col-sm-6'>";
     $collection .= "<form action='controller.php' method='post'>";
@@ -165,6 +167,7 @@ switch ($action) {
     // This is the start of a SQL query. We don't know how many things the user
     // filled out, so we need to build off of this one set at a time.
     $sql = 'INSERT INTO collection (collectiontext, clientid) VALUES ';
+
     // This array will hold placeholders for all the tuples- or (id, text) pairs
     // that we want to insert into the database. We use an array instead of direct
     // concatenation because PHP's implode() makes it easier not to worry about

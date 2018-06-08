@@ -34,9 +34,6 @@ CREATE TABLE collection (
   CONSTRAINT       fk_collection_client_id FOREIGN KEY (clientId) REFERENCES clients(clientId)
 );
 
-SELECT collectiontext FROM collection
-WHERE clientid = (SELECT clientid FROM clients WHERE clientusername = 'steve');
-
 -- If User Is Logged In
 /*
 INSERT INTO collection (collectionText, clientId)
