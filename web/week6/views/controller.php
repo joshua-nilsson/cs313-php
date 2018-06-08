@@ -255,7 +255,7 @@ switch ($action) {
     header('Location: index.php');
     break;
   case 'account':
-    $clientId = $_SESSION['clientData']['clientId'];
+    $clientId = $_SESSION['clientData']['clientid'];
     if ($_SESSION['loggedin']) {
       $clientCollection = clientCollection($clientId);
     }
