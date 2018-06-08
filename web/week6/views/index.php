@@ -1,8 +1,4 @@
 <?php
-if (!$_SESSION['loggedin']) {
-  header('Location: register.php');
-}
-
 //Start the session
 session_start();
 
@@ -24,6 +20,10 @@ catch (PDOException $ex)
 {
   echo 'Error!: ' . $ex->getMessage();
   die();
+}
+
+if (!$_SESSION['loggedin']) {
+  header('Location: register.php');
 }
 ?>
 <!DOCTYPE HTML>
