@@ -36,8 +36,6 @@ switch ($action) {
 
     $stmt = $db->prepare($statement2);
     $stmt->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
-    $stmt->execute();
-    $stmt->closeCursor();
 //    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
     //    for ($i=0;i<=$nameInput;i++) {
     //      $row = $statement->fetch(PDO::FETCH_ASSOC)
