@@ -1,4 +1,8 @@
 <?php
+if (!$_SESSION['loggedin']) {
+  header('Location: register.php');
+}
+
 //Start the session
 session_start();
 
