@@ -458,7 +458,7 @@ function deleteName($collectionid) {
     die();
   }
 
-  $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
+  $sql = 'DELETE FROM collection WHERE collectionid = 5';
 
   $stmt = $db->prepare($sql);
 
