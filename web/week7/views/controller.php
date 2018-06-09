@@ -281,7 +281,7 @@ switch ($action) {
   case 'update':
     break;
   case 'delete':
-    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_STRING);
+    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
     // Send the data to the model
     $deletion = deleteName($collectionid);
     header('Location: controller.php?action=generate');
@@ -461,7 +461,7 @@ function deleteName($collectionid) {
 
   $stmt = $db->prepare($sql);
 
-  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_STR);
+  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
 
   $stmt->closeCursor();
 
