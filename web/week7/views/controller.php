@@ -48,7 +48,6 @@ switch ($action) {
 
     $id = $_SESSION['clientData']['clientid'];
 
-//    $statement1 = $db->query('SELECT nameid, nametext FROM names');
     // Declare the query as a simple string
     $query = "WITH random_names AS (
       SELECT
@@ -85,26 +84,15 @@ switch ($action) {
       $query .= 'ORDER BY name DESC';
     }
 
-    //    $statement1 = $db->query('SELECT nameid, nametext FROM names');
     // Prepare the query
     $statement1 = $db->prepare($query);
     // Bind values
     $statement1->bindValue('num', $num, PDO::PARAM_INT);
     // Execute the statement
     $statement1->execute();
-//    $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
 
     $statement2 = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
-//    $statement2 = $db->prepare($stmt);
-//    $statement2->bindValue(':clientusername', $clientusername, PDO::PARAM_STR);
-//    $statement2->execute();
-//    $statement2->closeCursor();
 
-//    $statement2 = $db->query('SELECT collectionid, collectiontext FROM collection');
-    //    for ($i=0;i<=$nameInput;i++) {
-    //      $row = $statement->fetch(PDO::FETCH_ASSOC)
-    //      echo '<p>NAME: ' . $row['nametext'] . '</p>';
-    //   }
     $prompt = "<div id='prompt' class='container'>";
     $prompt .= "<form action='controller.php' method='post'>";
     $prompt .= "<div class='form-group'>";
