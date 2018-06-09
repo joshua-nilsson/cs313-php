@@ -290,7 +290,7 @@ switch ($action) {
 //    var_dump($collectionid);
     // Send the data to the model
 //    $deletion = deleteName($collectionid);
-    $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
+    $sql = 'DELETE FROM collection WHERE collectionid = :collectionid';
 
     $stmt = $db->prepare($sql);
 
