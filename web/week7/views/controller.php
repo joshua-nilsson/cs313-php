@@ -56,7 +56,7 @@ switch ($action) {
       FROM names
       WHERE LENGTH(nametext) >= 10
       ORDER BY random()
-      LIMIT :num
+      LIMIT '$num'
     ), split_names AS (
       SELECT
       ROW_NUMBER() OVER ()                                    AS shared_key,
