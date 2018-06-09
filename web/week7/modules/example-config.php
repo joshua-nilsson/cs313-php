@@ -18,7 +18,7 @@
                   <tr>
                     <th scope="col">PROMPT</th>
                     <th scope="col">NAME</th>
-                    <th scope="col">CONTROLS</th>
+                    <th scope="col">SUBMIT</th>
                   </tr>
                 </thead>
                 <tbody>
