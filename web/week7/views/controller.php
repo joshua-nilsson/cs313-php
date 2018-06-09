@@ -209,9 +209,11 @@ switch ($action) {
       $collection .= '</td>';
       $collection .= '<td>';
       $collection .= "<form action='controller.php' method='post'>";
+      $collection .= "<div class='input-group-append'>";
       $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='delete'>";
+      $collection .= '</div>';
       $collection .= '</form>';
       $collection .= '</td>';
       $collection .= '</tr>';
