@@ -195,7 +195,7 @@ switch ($action) {
       $collection .= '</div>';
       $collection .= '</div>';
       $collection .= '</td>';
-      $collection .= '<td>';
+      $collection .= "<td class='col-sm-2'>";
       $collection .= "<div class='input-group-append'>";
       $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
@@ -207,7 +207,7 @@ switch ($action) {
       $collection .= '</form>';
       $collection .= '</div>';
       $collection .= '</td>';
-      $collection .= '<td>';
+      $collection .= "<td class='col-sm-2'>";
       $collection .= "<div class='input-group-append'>";
       $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<input type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i>"; // input not button - but how do you submit then with no submit button?
