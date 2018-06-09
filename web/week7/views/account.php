@@ -53,14 +53,9 @@ if (!$_SESSION['loggedin']) {
               echo "<h2>Welcome " . $username . "</h2>";
             }
             ?>
-
             <?php if (isset($msg)){ echo $msg;} ?>
-
-            <?php if (isset($_SESSION['clientCollection'])){echo $_SESSION['clientCollection'];}
-
-
-            echo $clientCollection;
             ?>
+            <a href="index.php" class="btn btn-primary" title="Click to Access Generator">ACCESS GENERATOR</a>
           </div>
         </div>
       </div>
