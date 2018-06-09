@@ -204,7 +204,7 @@ switch ($action) {
       $collection .= "<div class='input-group-append'>";
       $collection .= "<button type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></button>";
       $collection .= "<input type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i>"; // input not button - but how do you submit then with no submit button?
-      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
+      $collection .= '<input type='hidden' name='collectionid' value="$row['collectionid']>';
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</tr>';
@@ -282,7 +282,7 @@ switch ($action) {
   case 'update':
     break;
   case 'delete':
-    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_VALIDATE_INT);
+    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
     echo '<h1>'.$collectionid.'</h1>';
     // Send the data to the model
     $deletion = deleteName($collectionid);
