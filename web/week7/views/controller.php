@@ -209,7 +209,6 @@ switch ($action) {
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</form>';
-      $collection .= '</td>';
       $collection .= '<td>';
       $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<div class='input-group-append'>";
