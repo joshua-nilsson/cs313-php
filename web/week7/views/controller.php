@@ -91,7 +91,7 @@ switch ($action) {
     // Execute the statement
     $statement1->execute();
 
-    $statement2 = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
+    $statement2 = $db->query("SELECT collectionid, collectiontext FROM collection WHERE clientid = '$id'");
 
     $prompt = "<div id='prompt' class='container'>";
     $prompt .= "<form action='controller.php' method='post'>";
