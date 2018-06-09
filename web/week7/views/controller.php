@@ -204,6 +204,7 @@ switch ($action) {
       $collection .= "<button type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></button>";
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='update'>";
+      $collection .= '</div>';
       $collection .= '</form>';
       $collection .= '</td>';
       $collection .= '<td>';
