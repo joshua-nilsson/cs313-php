@@ -28,6 +28,16 @@ if ($action == NULL){
 }
 switch ($action) {
   case 'generate':
+//     CONNOR MESSAGE - CONSIDER
+//    if (!isset($_SESSION['names']) || count($_SESSION['names']) === 0) {
+//      $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
+//
+//      $_SESSION['names'] = array();
+//
+//      foreach ($statement1->fetch() as $data) {
+//        array_push($_SESSION['names'], $data['nametext']);
+//      }
+//    }
 
     $num = filter_input(INPUT_POST, 'nameInput');
     if ($num === NULL){
@@ -107,28 +117,13 @@ switch ($action) {
     $prompt .= '</thead>';
     $prompt .= '<tbody>';
 
-    // Connor message - replace while loop with foreach
+    // Connor message - consider replace while loop with foreach
 //    foreach ($_SESSION['names'] as $name) {
 //      echo $name . '<br>';
 //    }
-
-    if (!isset($_SESSION['names']) || count($_SESSION['names']) === 0) {
-      $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
-
-      $_SESSION['names'] = array();
-
-      foreach ($statement1->fetch() as $data) {
-        array_push($_SESSION['names'], $data['nametext']);
-      }
-    } else {
     while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
     {
-      // functions for upper and lowercase
-
-      // Decide what sort method to use
       $case = $_POST['customRadioInline1'];
-
-      // Conditionally add a SORT BY clause to the base query
 
       $prompt .= '<tr>';
       $prompt .= '<td>';
@@ -158,7 +153,6 @@ switch ($action) {
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '</tr>';
-    }
     }
     $prompt .= '</tbody>';
     $prompt .= '</table>';
