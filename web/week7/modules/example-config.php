@@ -152,7 +152,7 @@
                 <div class="row">
                   <div class="col-sm-8">
                     <label id="how-many" for="nameRange">How Many Names?</label>
-                    <input type="range" name="nameInput" class="custom-range" id="nameRange" value="1" min="1" max="500" oninput="slider(); nameOutput.value = nameRange.value">
+                    <input type="range" name="nameInput" class="custom-range" id="nameRange" value="1" min="1" max="100" oninput="slider(); nameOutput.value = nameRange.value">
                     <output name="nameOutput" id="nameOutput">1</output>
                   </div>
                 </div>
