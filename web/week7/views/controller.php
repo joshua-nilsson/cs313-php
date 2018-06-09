@@ -211,8 +211,12 @@ switch ($action) {
     $collection .= '</tbody>';
     $collection .= '</table>';
     $collection .= '</div>';
+    $collection .= '</div>';
+    $collection .= '</div>';
+    $collection .= '</div>';
     $collection .= "<input type='hidden' name='action' value='delete'>";
     $collection .= '</form>';
+    $collection .= '</div>';
     $collection .= '</div>';
     include 'index.php';
     break;
