@@ -45,6 +45,8 @@ if (!$_SESSION['loggedin']) {
 
       <?php if (isset($prompt)){echo $prompt;}?>
       <?php if (isset($prompt)){echo $collection;}?>
+
+      <?php include '../modules/modal.php';?>
     </main>
 
     <footer>
