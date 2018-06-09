@@ -56,20 +56,23 @@ switch ($action) {
       FROM names
       WHERE LENGTH(nametext) >= 10
       ORDER BY random()
-      LIMIT ':num'
-    ), split_names AS (
+      LIMIT :num
+    ), front AS (
       SELECT
-      ROW_NUMBER() OVER ()                                    AS shared_key,
-      LEFT(nametext, 5)                                       AS first_half,
+      ROW_NUMBER() OVER (ORDER BY random())                   AS shared_key,
+      LEFT(nametext, 5)                                       AS first_half
+      FROM random_names
+    ), back AS (
+      SELECT
+      ROW_NUMBER() OVER (ORDER BY random())                   AS shared_key,
       LEFT(INITCAP(RIGHT(nametext, LENGTH(nametext) - 5)), 5) AS second_half
       FROM random_names
-      ORDER BY random()
     )
     SELECT
       CONCAT(front.first_half, back.second_half) AS name
-      FROM split_names AS front
-      INNER JOIN split_names AS back
-      ON front.shared_key = back.shared_key
+      FROM front
+      INNER JOIN back
+      ON front.shared_key = back.shared_key;
       ";
 
     // Decide what sort method to use
