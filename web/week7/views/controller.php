@@ -458,14 +458,16 @@ function deleteName($collectionid) {
     die();
   }
 
-  $sql = $db->query("DELETE FROM collection WHERE collectionid = '$collectionid'");
+  $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
 
-//  $stmt = $db->prepare($sql);
-//
-//  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
-//
-//  $stmt->closeCursor();
+  $stmt = $db->prepare($sql);
 
-  return $sql;
+  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
+
+  $stmt->execute();
+
+  $stmt->closeCursor();
+
+  return $stmt;
 }
 ?>
