@@ -189,7 +189,7 @@ switch ($action) {
 //      $collection .= "<form action='controller.php' method='post'>";
       $collection .= '<tr>';
       $collection .= '<td>';
-      $collection .= "<div class='input-group input-group-default mb-6'>";
+      $collection .= "<div class='input-group input-group-default mb-8'>";
       $collection .= "<div class='input-group-prepend'>";
       $collection .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[collectiontext]</div>";
       $collection .= '</div>';
