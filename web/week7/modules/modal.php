@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         <?php
-        echo "<p>Are you sure you want to delete " . $collectiontext . "?</p>";
+        echo "<p>Are you sure you want to delete this name?" . $row[name] . "?</p>";
         ?>
       </div>
       <div class="modal-footer">
