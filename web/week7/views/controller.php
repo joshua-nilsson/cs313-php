@@ -299,7 +299,7 @@ switch ($action) {
     try {
       $stmt->execute();
       $stmt->closeCursor();
-//      header('Location: controller.php?action=generate');
+      header('Location: controller.php?action=generate');
     } catch (PDOException $e) {
       echo $e->getMessage();
       exit;
