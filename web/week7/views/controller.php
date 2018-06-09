@@ -180,14 +180,12 @@ switch ($action) {
     $collection .= "<th scope='col'>PROMPT</th>";
     $collection .= "<th scope='col'>NAME</th>";
     $collection .= "<th scope='col'>CONTROLS</th>";
-    $collection .= "<th scope='col'></th>";
+    $collection .= "<th scope='col' class='col-sm-2'></th>";
     $collection .= '</tr>';
     $collection .= '</thead>';
     $collection .= '<tbody>';
     while ($row = $statement2->fetch(PDO::FETCH_ASSOC))
     {
-      echo $row[collectionid];
-//      $collection .= "<form action='controller.php' method='post'>";
       $collection .= '<tr>';
       $collection .= '<td>';
       $collection .= "<div class='input-group input-group-default col-mb-6'>";
