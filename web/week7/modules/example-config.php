@@ -102,21 +102,21 @@
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
+                      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked value="default">
                       <label class="custom-control-label" for="customRadioInline1">Default</label>
                     </div>
                   </div>
 
                   <div class="col-sm-3">
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                      <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" value="uppercase">
                       <label class="custom-control-label" for="customRadioInline2">Uppercase</label>
                     </div>
                   </div>
 
                   <div class="col-sm-3">
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+                      <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input" value="lowercase">
                       <label class="custom-control-label" for="customRadioInline3">Lowercase</label>
                     </div>
                   </div>
@@ -127,21 +127,21 @@
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline4" name="customRadioInline2" class="custom-control-input" checked>
+                      <input type="radio" id="customRadioInline4" name="customRadioInline2" class="custom-control-input" checked value="randomize">
                       <label class="custom-control-label" for="customRadioInline4">Randomize</label>
                     </div>
                   </div>
 
                   <div class="col-sm-3">
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline5" name="customRadioInline2" class="custom-control-input">
+                      <input type="radio" id="customRadioInline5" name="customRadioInline2" class="custom-control-input" value="ascending">
                       <label class="custom-control-label" for="customRadioInline5">Ascending</label>
                     </div>
                   </div>
 
                   <div class="col-sm-3">
                     <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline6" name="customRadioInline2" class="custom-control-input">
+                      <input type="radio" id="customRadioInline6" name="customRadioInline2" class="custom-control-input" value="descending">
                       <label class="custom-control-label" for="customRadioInline6">Descending</label>
                     </div>
                   </div>
@@ -150,28 +150,10 @@
 
               <div class="form-group">
                 <div class="row">
-                  <div class="col-sm-3">
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline7" name="customRadioInline3" class="custom-control-input" checked>
-                      <label class="custom-control-label" for="customRadioInline7">Normal</label>
-                    </div>
-                  </div>
-
-                  <div class="col-sm-3">
-                    <div class="custom-control custom-radio custom-control-inline">
-                      <input type="radio" id="customRadioInline8" name="customRadioInline3" class="custom-control-input">
-                      <label class="custom-control-label" for="customRadioInline8">Reverse</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-8">
-                      <label id="how-many" for="nameRange">How Many Names?</label>
-                      <input type="range" name="nameInput" class="custom-range" id="nameRange" value="1" min="1" max="500" oninput="slider(); nameOutput.value = nameRange.value">
-                      <output name="nameOutput" id="nameOutput">1</output>
-                    </div>
+                  <div class="col-sm-8">
+                    <label id="how-many" for="nameRange">How Many Names?</label>
+                    <input type="range" name="nameInput" class="custom-range" id="nameRange" value="1" min="1" max="500" oninput="slider(); nameOutput.value = nameRange.value">
+                    <output name="nameOutput" id="nameOutput">1</output>
                   </div>
                 </div>
               </div>

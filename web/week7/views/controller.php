@@ -47,14 +47,14 @@ switch ($action) {
     $id = $_SESSION['clientData']['clientid'];
 
 //    $statement1 = $db->query('SELECT nameid, nametext FROM names');
-    $statement1 = $db->query("
-    WITH random_names AS (
+    // Declare the query as a simple string
+    $query = "WITH random_names AS (
       SELECT
       nametext
       FROM names
       WHERE LENGTH(nametext) >= 10
       ORDER BY random()
-      LIMIT '$num'
+      LIMIT :num
     ), split_names AS (
       SELECT
       ROW_NUMBER() OVER ()                                    AS shared_key,
@@ -63,11 +63,30 @@ switch ($action) {
       FROM random_names
       ORDER BY random()
     )
-      SELECT
+    SELECT
       CONCAT(front.first_half, back.second_half) AS name
       FROM split_names AS front
       INNER JOIN split_names AS back
-      ON front.shared_key = back.shared_key");
+      ON front.shared_key = back.shared_key
+      ";
+
+    // Decide what sort method to use
+    $sort = $_POST('customRadioInline2');
+
+    // Conditionally add a SORT BY clause to the base query
+    if ($sort === 'ascending') {
+      $query .= 'ORDER BY name ASC';
+    } else if ($sort === 'descending') {
+      $query .= 'ORDER BY name DESC';
+    }
+
+    //    $statement1 = $db->query('SELECT nameid, nametext FROM names');
+    // Prepare the query
+    $statement1 = $db->prepare($query);
+    // Bind values
+    $statement1->bindValue('num', $num, PDO::PARAM_INT);
+    // Execute the statement
+    $statement1->execute();
 //    $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
 
     $statement2 = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
