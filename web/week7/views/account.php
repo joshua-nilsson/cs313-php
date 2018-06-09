@@ -59,7 +59,7 @@ if (!$_SESSION['loggedin']) {
             <?php if (isset($_SESSION['clientCollection'])){echo $_SESSION['clientCollection'];}
 
 
-            echo clientCollection($_SESSION['clientData']['clientid']);
+            echo $clientCollection;
             ?>
           </div>
         </div>
