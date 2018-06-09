@@ -203,7 +203,6 @@ switch ($action) {
       $collection .= "<div class='input-group-append'>";
       $collection .= "<button type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></button>";
       $collection .= "<button type='submit' name='collectionid' value='$row[collectionid]' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>";
-      $collection .= "<input type='hidden' name='action' value='delete'>";
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</tr>';
