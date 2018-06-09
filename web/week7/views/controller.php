@@ -201,17 +201,17 @@ switch ($action) {
       $collection .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
       $collection .= '</div>';
       $collection .= "<div class='input-group-append'>";
-      $collection .= "<input type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i>";
+      $collection .= "<button type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></button>";
+      $collection .= '</div>';
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='update'>";
-      $collection .= '</div>';
       $collection .= '</form>';
       $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<div class='input-group-append'>";
-      $collection .= "<input type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i>"; // input not button - but how do you submit then with no submit button?
+      $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
+      $collection .= '</div>';
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='delete'>";
-      $collection .= '</div>';
       $collection .= '</form>';
       $collection .= '</td>';
       $collection .= '</tr>';
