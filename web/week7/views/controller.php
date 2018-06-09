@@ -187,15 +187,15 @@ switch ($action) {
     {
       echo $row[collectionid];
 //      $collection .= "<form action='controller.php' method='post'>";
-      $collection .= "<tr class='row'>";
-      $collection .= "<td class='col-sm-4'>";
+      $collection .= '<tr>';
+      $collection .= '<td>';
       $collection .= "<div class='input-group input-group-default mb-6'>";
       $collection .= "<div class='input-group-prepend'>";
       $collection .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[collectiontext]</div>";
       $collection .= '</div>';
       $collection .= '</div>';
       $collection .= '</td>';
-      $collection .= "<td class='col-sm-8'>";
+      $collection .= "<td>";
       $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<div class='input-group-append'>";
       $collection .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
