@@ -44,13 +44,12 @@ if (!$_SESSION['loggedin']) {
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Account Overview</h1>
             <?php
             if (isset($_SESSION['loggedin'])){
 
             $username = $_SESSION['clientData']['clientusername'];
 
-              echo "<h2>Welcome " . $username . "</h2>";
+              echo "<h1>Welcome " . $username . "</h1>";
             }
             ?>
             <?php if (isset($msg)){ echo $msg;} ?>
