@@ -294,7 +294,7 @@ switch ($action) {
 
     $stmt = $db->prepare($sql);
 
-    $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
+    $stmt->bindValue(':collectionid', $collectionid, PDO::PARAM_INT);
 
     try {
       $stmt->execute();
