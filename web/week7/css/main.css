@@ -25,3 +25,7 @@ table > #head-dark {
 #how-many, #prompt, #reg, #log, p a {
   margin-top: 15px;
 }
+
+#col-pad {
+  padding: 0px -25px;
+}
