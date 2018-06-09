@@ -28,16 +28,6 @@ if ($action == NULL){
 }
 switch ($action) {
   case 'generate':
-//     CONNOR MESSAGE
-//    if (!isset($_SESSION['names']) || count($_SESSION['names']) === 0) {
-//      $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
-//
-//      $_SESSION['names'] = array();
-//
-//      foreach ($statement1->fetch() as $data) {
-//        array_push($_SESSION['names'], $data['nametext']);
-//      }
-//    }
 
     $num = filter_input(INPUT_POST, 'nameInput');
     if ($num === NULL){
@@ -121,6 +111,16 @@ switch ($action) {
 //    foreach ($_SESSION['names'] as $name) {
 //      echo $name . '<br>';
 //    }
+
+    if (!isset($_SESSION['names']) || count($_SESSION['names']) === 0) {
+      $statement1 = $db->query("SELECT * FROM names ORDER BY RANDOM() LIMIT '$num'");
+
+      $_SESSION['names'] = array();
+
+      foreach ($statement1->fetch() as $data) {
+        array_push($_SESSION['names'], $data['nametext']);
+      }
+    } else {
     while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
     {
       // functions for upper and lowercase
@@ -158,6 +158,7 @@ switch ($action) {
       $prompt .= '</div>';
       $prompt .= '</td>';
       $prompt .= '</tr>';
+    }
     }
     $prompt .= '</tbody>';
     $prompt .= '</table>';
