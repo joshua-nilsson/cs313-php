@@ -189,7 +189,7 @@ switch ($action) {
 //      $collection .= "<form action='controller.php' method='post'>";
       $collection .= '<tr>';
       $collection .= '<td>';
-      $collection .= "<div class='input-group input-group-default mb-8'>";
+      $collection .= "<div class='input-group input-group-default mb-6'>";
       $collection .= "<div class='input-group-prepend'>";
       $collection .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[collectiontext]</div>";
       $collection .= '</div>';
@@ -208,14 +208,14 @@ switch ($action) {
       $collection .= '</td>';
       $collection .= '</form>';
       $collection .= "<form action='controller.php' method='post'>";
-      $collection .= '<td>';
-      $collection .= "<div class='input-group-append'>";
-      $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
-      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
-      $collection .= "<input type='hidden' name='action' value='delete'>";
-      $collection .= '</div>';
-      $collection .= '</td>';
-      $collection .= '</form>';
+//      $collection .= '<td>';
+//      $collection .= "<div class='input-group-append'>";
+//      $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
+//      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
+//      $collection .= "<input type='hidden' name='action' value='delete'>";
+//      $collection .= '</div>';
+//      $collection .= '</td>';
+//      $collection .= '</form>';
       $collection .= '</tr>';
 //      $collection .= '</form>';
     }
