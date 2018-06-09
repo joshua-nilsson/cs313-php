@@ -72,7 +72,7 @@ switch ($action) {
       CONCAT(front.first_half, back.second_half) AS name
       FROM front
       INNER JOIN back
-      ON front.shared_key = back.shared_key;
+      ON front.shared_key = back.shared_key
       ";
 
     // Decide what sort method to use
@@ -135,17 +135,17 @@ switch ($action) {
 //    }
     while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
     {
-      // functions for upper and lowercase
+//      // functions for upper and lowercase
+////
+//      // Decide what sort method to use
+//      $case = $_POST['customRadioInline1'];
 //
-      // Decide what sort method to use
-      $case = $_POST['customRadioInline1'];
-
-      // Conditionally add a SORT BY clause to the base query
-      if ($case === 'uppercase') {
-        strtoupper($row[name]);
-      } else if ($case === 'lowercase') {
-        strtolower($row[name]);
-      }
+//      // Conditionally add a SORT BY clause to the base query
+//      if ($case === 'uppercase') {
+//        strtoupper($row[name]);
+//      } else if ($case === 'lowercase') {
+//        strtolower($row[name]);
+//      }
 
       $prompt .= '<tr>';
       $prompt .= '<td>';
