@@ -1,6 +1,6 @@
 <nav>
-  <ul class="nav">
-    <div class="container">
+  <div class="container">
+    <ul class="nav">
       <div class="row">
         <div class="col-sm-10">
           <li class="nav-item"><a href="index.php">Fantasy Name Generator</a></li>
@@ -32,6 +32,6 @@
           </li>
         </div>
       </div>
-    </div>
-  </ul>
+    </ul>
+  </div>
 </nav>
