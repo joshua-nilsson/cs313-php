@@ -296,7 +296,7 @@ switch ($action) {
     $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
     $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING);
 
-    $sql = 'UPDATE collection SET collectiontext = :collectiontext WHERE collectionid = :collectionid';
+    $sql = 'UPDATE collection SET collectionid = :collectionid, collectiontext = :collectiontext WHERE collectionid = :collectionid';
 
     $stmt = $db->prepare($sql);
 
