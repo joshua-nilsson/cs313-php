@@ -186,7 +186,7 @@ switch ($action) {
     while ($row = $statement2->fetch(PDO::FETCH_ASSOC))
     {
       echo $row[collectionid];
-      $collection .= "<form action='controller.php' method='post'>";
+//      $collection .= "<form action='controller.php' method='post'>";
       $collection .= '<tr>';
       $collection .= '<td>';
       $collection .= "<div class='input-group input-group-default mb-6'>";
@@ -202,14 +202,20 @@ switch ($action) {
       $collection .= '</td>';
       $collection .= '<td>';
       $collection .= "<div class='input-group-append'>";
-      $collection .= "<button type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></button>";
-      $collection .= "<input type='submit' name='action' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i>"; // input not button - but how do you submit then with no submit button?
+      $collection .= "<form action='controller.php' method='post'>";
+      $collection .= "<input type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i>";
+      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
+      $collection .= "<input type='hidden' name='action' value='update'>";
+      $collection .= '</form>';
+      $collection .= "<form action='controller.php' method='post'>";
+      $collection .= "<input type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i>"; // input not button - but how do you submit then with no submit button?
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='delete'>";
+      $collection .= '</form>';
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</tr>';
-      $collection .= '</form>';
+//      $collection .= '</form>';
     }
     $collection .= '</tbody>';
     $collection .= '</table>';
