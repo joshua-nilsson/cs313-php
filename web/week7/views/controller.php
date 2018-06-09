@@ -197,12 +197,10 @@ switch ($action) {
       $collection .= '</td>';
       $collection .= '<td>';
       $collection .= "<div class='input-group-append'>";
+      $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
       $collection .= '</div>';
-      $collection .= '</td>';
-      $collection .= '<td>';
       $collection .= "<div class='input-group-append'>";
-      $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<input type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i>";
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='update'>";
