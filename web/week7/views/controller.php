@@ -112,7 +112,7 @@ switch ($action) {
     $prompt .= '<tr>';
     $prompt .= "<th scope='col'>PROMPT</th>";
     $prompt .= "<th scope='col'>NAME</th>";
-    $prompt .= "<th scope='col'></th>";
+    $prompt .= "<th scope='col'>SUBMIT</th>";
     $prompt .= '</tr>';
     $prompt .= '</thead>';
     $prompt .= '<tbody>';
