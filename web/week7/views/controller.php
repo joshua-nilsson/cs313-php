@@ -153,8 +153,9 @@ switch ($action) {
       } else if ($case === 'lowercase') {
         $lowercase = strtolower($row[name]);
         $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$lowercase</div>";
+      } else {
+        $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[name]</div>";
       }
-//      $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[name]</div>";
       $prompt .= '</div>';
       $prompt .= '</div>';
       $prompt .= '</td>';
