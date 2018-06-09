@@ -186,7 +186,7 @@ switch ($action) {
     while ($row = $statement2->fetch(PDO::FETCH_ASSOC))
     {
       //        $collection .= '<p>Name: ' . $row['nametext'] . '</p>';
-      echo $row[collectionid];
+      echo $row[collectiontext];
       $collection .= '<tr>';
       $collection .= '<td>';
       $collection .= "<div class='input-group input-group-default mb-6'>";
