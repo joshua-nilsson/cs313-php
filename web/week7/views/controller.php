@@ -130,6 +130,18 @@ switch ($action) {
 //    }
     while ($row = $statement1->fetch(PDO::FETCH_ASSOC))
     {
+      // functions for upper and lowercase
+//
+//      // Decide what sort method to use
+//      $sort = $_POST['customRadioInline2'];
+//
+//      // Conditionally add a SORT BY clause to the base query
+//      if ($sort === 'ascending') {
+//        $query .= 'ORDER BY name ASC';
+//      } else if ($sort === 'descending') {
+//        $query .= 'ORDER BY name DESC';
+//      }
+
       $prompt .= '<tr>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group input-group-default mb-6'>";
@@ -320,6 +332,7 @@ switch ($action) {
     $clientId = $_SESSION['clientData']['clientid'];
     if ($_SESSION['loggedin']) {
       $clientCollection = clientCollection($clientId);
+      $_SESSION['clientCollection'] = $clientCollection;
     }
     else {
       header('Location: index.php');
