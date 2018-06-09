@@ -56,7 +56,7 @@ switch ($action) {
       FROM names
       WHERE LENGTH(nametext) >= 10
       ORDER BY random()
-      LIMIT '$num'
+      LIMIT ':num'
     ), split_names AS (
       SELECT
       ROW_NUMBER() OVER ()                                    AS shared_key,
@@ -137,18 +137,15 @@ switch ($action) {
       // Decide what sort method to use
       $case = $_POST['customRadioInline1'];
 
-      // Conditionally add a SORT BY clause to the base query
-      if ($case === 'uppercase') {
-        strtoupper($row[name]);
-      } else if ($case === 'lowercase') {
-        strtolower($row[name]);
-      }
-
       $prompt .= '<tr>';
       $prompt .= '<td>';
       $prompt .= "<div class='input-group input-group-default mb-6'>";
       $prompt .= "<div class='input-group-prepend'>";
-      $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[name]</div>";
+      if ($case === 'uppercase') {
+        $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>".$row['UPPER(name)']."</div>";
+      } else if ($case === 'lowercase') {
+        $prompt .= "<div class='input-group-text' id='inputGroup-sizing-sm'>".$row['LOWER(name)']."</div>";
+      }
       $prompt .= '</div>';
       $prompt .= '</div>';
       $prompt .= '</td>';
