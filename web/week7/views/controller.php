@@ -376,11 +376,6 @@ switch ($action) {
     header('Location: index.php');
     break;
   case 'account':
-    $clientId = $_SESSION['clientData']['clientid'];
-
-      $clientCollection = clientCollection($clientId);
-      $_SESSION['clientCollection'] = $clientCollection;
-
     include 'account.php';
     break;
   default:
