@@ -282,12 +282,22 @@ switch ($action) {
   case 'update':
     break;
   case 'delete':
-    $collectionid = $_POST['collectionid'];
-//    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
+//    $collectionid = $_POST['collectionid'];
+    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
 //    var_dump($collectionid);
     echo $collectionid;
     // Send the data to the model
-    $deletion = deleteName($collectionid);
+//    $deletion = deleteName($collectionid);
+    $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
+
+    $stmt = $db->prepare($sql);
+
+    $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    $stmt->closeCursor();
+
     header('Location: controller.php?action=generate');
     break;
   case 'register':
@@ -440,37 +450,37 @@ function clientCollection($clientId) {
   return $clientCollection;
 }
 
-function deleteName($collectionid) {
-  try{
-    $dbUrl = getenv('DATABASE_URL');
-    $dbopts = parse_url($dbUrl);
-    $dbHost = $dbopts["host"];
-    $dbPort = $dbopts["port"];
-    $dbUser = $dbopts["user"];
-    $dbPassword = $dbopts["pass"];
-    if(!empty($dbopts["path"])){
-      $dbName = ltrim($dbopts["path"],'/');
-    }else{
-      $dbName = $dbase;
-    }
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-  }
-  catch (PDOException $ex)
-  {
-    echo 'Error!: ' . $ex->getMessage();
-    die();
-  }
-
-  $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
-
-  $stmt = $db->prepare($sql);
-
-  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
-
-  $stmt->execute();
-
-  $stmt->closeCursor();
-
-  return $stmt;
-}
+//function deleteName($collectionid) {
+//  try{
+//    $dbUrl = getenv('DATABASE_URL');
+//    $dbopts = parse_url($dbUrl);
+//    $dbHost = $dbopts["host"];
+//    $dbPort = $dbopts["port"];
+//    $dbUser = $dbopts["user"];
+//    $dbPassword = $dbopts["pass"];
+//    if(!empty($dbopts["path"])){
+//      $dbName = ltrim($dbopts["path"],'/');
+//    }else{
+//      $dbName = $dbase;
+//    }
+//    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+//  }
+//  catch (PDOException $ex)
+//  {
+//    echo 'Error!: ' . $ex->getMessage();
+//    die();
+//  }
+//
+//  $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
+//
+//  $stmt = $db->prepare($sql);
+//
+//  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
+//
+//  $stmt->execute();
+//
+//  $stmt->closeCursor();
+//
+//  return $stmt;
+//}
 ?>
