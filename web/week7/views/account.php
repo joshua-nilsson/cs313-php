@@ -56,7 +56,12 @@ if (!$_SESSION['loggedin']) {
 
             <?php if (isset($msg)){ echo $msg;} ?>
 
-            <?php if (isset($_SESSION['clientCollection'])){echo $_SESSION['clientCollection'];}?>
+            <?php if (isset($_SESSION['clientCollection'])){echo $_SESSION['clientCollection'];}
+
+
+            echo clientCollection($_SESSION['clientData']['clientid']);
+            ?>
+
           </div>
         </div>
       </div>

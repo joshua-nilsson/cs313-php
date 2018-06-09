@@ -1,6 +1,8 @@
 <?php
 //Start the session
 session_start();
+
+// include functions.php and accounts
 try{
   $dbUrl = getenv('DATABASE_URL');
   $dbopts = parse_url($dbUrl);
@@ -132,15 +134,15 @@ switch ($action) {
     {
       // functions for upper and lowercase
 //
-//      // Decide what sort method to use
-//      $sort = $_POST['customRadioInline2'];
-//
-//      // Conditionally add a SORT BY clause to the base query
-//      if ($sort === 'ascending') {
-//        $query .= 'ORDER BY name ASC';
-//      } else if ($sort === 'descending') {
-//        $query .= 'ORDER BY name DESC';
-//      }
+      // Decide what sort method to use
+      $case = $_POST['customRadioInline1'];
+
+      // Conditionally add a SORT BY clause to the base query
+      if ($case === 'uppercase') {
+        strtoupper($row[name]);
+      } else if ($case === 'lowercase') {
+        strtolower($row[name]);
+      }
 
       $prompt .= '<tr>';
       $prompt .= '<td>';
@@ -350,7 +352,7 @@ function checkPassword($clientpassword) {
   return preg_match($pattern, $clientpassword);
 }
 function registerClient($clientusername, $clientpassword) {
-  session_start();
+
   try{
     $dbUrl = getenv('DATABASE_URL');
     $dbopts = parse_url($dbUrl);
@@ -377,7 +379,7 @@ function registerClient($clientusername, $clientpassword) {
   $stmt->execute();
 }
 function getClient($clientusername){
-  session_start();
+
   try{
     $dbUrl = getenv('DATABASE_URL');
     $dbopts = parse_url($dbUrl);
@@ -406,7 +408,7 @@ function getClient($clientusername){
   return $clientData;
 }
 function clientCollection($clientId) {
-  session_start();
+
   try{
     $dbUrl = getenv('DATABASE_URL');
     $dbopts = parse_url($dbUrl);
@@ -427,8 +429,7 @@ function clientCollection($clientId) {
     die();
   }
 
-  $id = $_SESSION['clientData']['clientid'];
-  $collection = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$id'");
+  $collection = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$clientId'");
 
   $clientCollection = '<ul>';
   while ($row = $collection->fetch(PDO::FETCH_ASSOC))
