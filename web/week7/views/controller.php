@@ -282,7 +282,7 @@ switch ($action) {
   case 'update':
     break;
   case 'delete':
-    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
+    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_VALIDATE_INT);
     echo '<h1>'.$collectionid.'</h1>';
     // Send the data to the model
     $deletion = deleteName($collectionid);
