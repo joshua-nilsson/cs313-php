@@ -377,13 +377,10 @@ switch ($action) {
     break;
   case 'account':
     $clientId = $_SESSION['clientData']['clientid'];
-    if ($_SESSION['loggedin']) {
+
       $clientCollection = clientCollection($clientId);
       $_SESSION['clientCollection'] = $clientCollection;
-    }
-    else {
-      header('Location: index.php');
-    }
+
     include 'account.php';
     break;
   default:
