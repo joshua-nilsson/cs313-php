@@ -161,7 +161,7 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</div>';
     $prompt .= '</div>';
-    $prompt .= "<input type='hidden' name='action' value='insert'>"; // possibly wrong place?
+    $prompt .= "<input type='hidden' name='action' value='insert'>";
     $prompt .= '</form>';
     $collection = "<div id='collection' class='col-sm-6'>";
     $collection .= "<form action='controller.php' method='post'>";
@@ -203,6 +203,7 @@ switch ($action) {
       $collection .= "<div class='input-group-append'>";
       $collection .= "<button type='button' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></button>";
       $collection .= "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>";
+      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= '</div>';
       $collection .= '</td>';
       $collection .= '</tr>';
@@ -210,6 +211,7 @@ switch ($action) {
     $collection .= '</tbody>';
     $collection .= '</table>';
     $collection .= '</div>';
+    $collection .= "<input type='hidden' name='action' value='delete'>";
     $collection .= '</form>';
     $collection .= '</div>';
     include 'index.php';
@@ -279,6 +281,10 @@ switch ($action) {
   case 'update':
     break;
   case 'delete':
+    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_STRING);
+    // Send the data to the model
+    $deletion = deleteName($collectionid);
+    header('Location: controller.php?action=generate');
     break;
   case 'register':
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
@@ -429,11 +435,36 @@ function clientCollection($clientId) {
   $clientCollection .= '</ul>';
   return $clientCollection;
 }
-//  $stmt = $db->prepare($sql);
-//  $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
-//  $stmt->execute();
-//  $collection = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//  $stmt->closeCursor();
-//  return $collection;
-//}
+
+function deleteName($collectionid) {
+  try{
+    $dbUrl = getenv('DATABASE_URL');
+    $dbopts = parse_url($dbUrl);
+    $dbHost = $dbopts["host"];
+    $dbPort = $dbopts["port"];
+    $dbUser = $dbopts["user"];
+    $dbPassword = $dbopts["pass"];
+    if(!empty($dbopts["path"])){
+      $dbName = ltrim($dbopts["path"],'/');
+    }else{
+      $dbName = $dbase;
+    }
+    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  }
+  catch (PDOException $ex)
+  {
+    echo 'Error!: ' . $ex->getMessage();
+    die();
+  }
+
+  $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
+
+  $stmt = $db->prepare($sql);
+
+  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_STR);
+
+  $stmt->closeCursor();
+
+  return $stmt;
+}
 ?>

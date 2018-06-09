@@ -9,9 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php
-        echo "<p>Are you sure you want to delete this name?" . $row[name] . "?</p>";
-        ?>
+        <p>Are you sure you want to delete this name?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Click to Cancel"><i class="fas fa-ban fa-2x"></i></button>
