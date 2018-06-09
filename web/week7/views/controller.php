@@ -71,7 +71,7 @@ switch ($action) {
       ";
 
     // Decide what sort method to use
-    $sort = $_POST('customRadioInline2');
+    $sort = $_POST['customRadioInline2'];
 
     // Conditionally add a SORT BY clause to the base query
     if ($sort === 'ascending') {
