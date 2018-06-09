@@ -204,7 +204,7 @@ switch ($action) {
       $collection .= "<div class='input-group-append'>";
       $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<input type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i>";
-      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
+      $collection .= "<input type='hidden' name='collectiontext' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='update'>";
       $collection .= '</form>';
       $collection .= "<form action='controller.php' method='post'>";
@@ -292,6 +292,22 @@ switch ($action) {
     }
     break;
   case 'update':
+    $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING);
+
+    $sql = 'UPDATE collection SET collectiontext = :collectiontext';
+
+    $stmt = $db->prepare($sql);
+
+    $stmt->bindValue(':collectiontext', $collectiontext, PDO::PARAM_STR);
+
+    try {
+      $stmt->execute();
+      $stmt->closeCursor();
+      header('Location: controller.php?action=generate');
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+      exit;
+    }
     break;
   case 'delete':
 //    $collectionid = $_POST['collectionid'];
