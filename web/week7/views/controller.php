@@ -473,7 +473,6 @@ function clientCollection($clientId) {
     echo 'Error!: ' . $ex->getMessage();
     die();
   }
-
   $collection = $db->query("SELECT collectiontext FROM collection WHERE clientid = '$clientId'");
 
   $clientCollection = '<ul>';
@@ -484,38 +483,4 @@ function clientCollection($clientId) {
   $clientCollection .= '</ul>';
   return $clientCollection;
 }
-
-//function deleteName($collectionid) {
-//  try{
-//    $dbUrl = getenv('DATABASE_URL');
-//    $dbopts = parse_url($dbUrl);
-//    $dbHost = $dbopts["host"];
-//    $dbPort = $dbopts["port"];
-//    $dbUser = $dbopts["user"];
-//    $dbPassword = $dbopts["pass"];
-//    if(!empty($dbopts["path"])){
-//      $dbName = ltrim($dbopts["path"],'/');
-//    }else{
-//      $dbName = $dbase;
-//    }
-//    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-//  }
-//  catch (PDOException $ex)
-//  {
-//    echo 'Error!: ' . $ex->getMessage();
-//    die();
-//  }
-//
-//  $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
-//
-//  $stmt = $db->prepare($sql);
-//
-//  $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
-//
-//  $stmt->execute();
-//
-//  $stmt->closeCursor();
-//
-//  return $stmt;
-//}
 ?>
