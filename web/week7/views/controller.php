@@ -208,7 +208,9 @@ switch ($action) {
       $collection .= "<input type='hidden' name='action' value='update'>";
       $collection .= '</div>';
       $collection .= "<div class='input-group-append'>";
-      $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
+//      $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
+      $collection .= "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#exampleModalCenter' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>";
+
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
       $collection .= "<input type='hidden' name='action' value='delete'>";
       $collection .= '</div>';
