@@ -53,7 +53,7 @@ if (!$_SESSION['loggedin']) {
             }
             ?>
             <?php if (isset($msg)){ echo $msg;} ?>
-            <a href="index.php" class="btn btn-primary" title="Click to Access Generator">ACCESS GENERATOR</a>
+            <a href="index.php" id="access" class="btn btn-primary" title="Click to Access Generator">ACCESS GENERATOR</a>
           </div>
         </div>
       </div>

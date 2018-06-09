@@ -26,6 +26,10 @@ table > #head-dark {
   margin-top: 15px;
 }
 
+#access {
+  margin-bottom: 25px;
+}
+
 th {
   text-align: center;
 }
