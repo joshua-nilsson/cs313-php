@@ -178,9 +178,9 @@ switch ($action) {
     $collection .= "<thead id='head-dark' class='thead-dark'>";
     $collection .= '<tr>';
     $collection .= "<th scope='col'>PROMPT</th>";
-    $collection .= "<th scope='col'>NAME</th>";
+    $collection .= "<th scope='col' class='col-sm-8'>NAME</th>";
     $collection .= "<th scope='col'>CONTROLS</th>";
-    $collection .= "<th scope='col' class='col-sm-6'></th>";
+    $collection .= "<th scope='col'></th>";
     $collection .= '</tr>';
     $collection .= '</thead>';
     $collection .= '<tbody>';
