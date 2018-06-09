@@ -61,7 +61,6 @@ if (!$_SESSION['loggedin']) {
 
             echo clientCollection($_SESSION['clientData']['clientid']);
             ?>
-
           </div>
         </div>
       </div>
