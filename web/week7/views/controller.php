@@ -187,7 +187,7 @@ switch ($action) {
     {
       echo $row[collectionid];
 //      $collection .= "<form action='controller.php' method='post'>";
-      $collection .= '<tr>';
+      $collection .= "<tr class='col-sm-12'>";
       $collection .= '<td>';
       $collection .= "<div class='input-group input-group-default mb-6'>";
       $collection .= "<div class='input-group-prepend'>";
@@ -195,7 +195,7 @@ switch ($action) {
       $collection .= '</div>';
       $collection .= '</div>';
       $collection .= '</td>';
-      $collection .= "<td class='col-sm-2'>";
+      $collection .= "<td>";
       $collection .= "<form action='controller.php' method='post'>";
       $collection .= "<div class='input-group-append'>";
       $collection .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
@@ -223,8 +223,6 @@ switch ($action) {
     $collection .= '</div>';
     $collection .= '</div>';
     $collection .= '</div>';
-//    $collection .= "<input type='hidden' name='action' value='delete'>";
-//    $collection .= '</form>';
     $collection .= '</div>';
     $collection .= '</div>';
     include 'index.php';
