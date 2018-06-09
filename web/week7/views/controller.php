@@ -187,8 +187,8 @@ switch ($action) {
     {
       echo $row[collectionid];
 //      $collection .= "<form action='controller.php' method='post'>";
-      $collection .= "<tr class='col-sm-12'>";
-      $collection .= '<td>';
+      $collection .= "<tr class='row'>";
+      $collection .= "<td class='col-sm-12'>";
       $collection .= "<div class='input-group input-group-default mb-6'>";
       $collection .= "<div class='input-group-prepend'>";
       $collection .= "<div class='input-group-text' id='inputGroup-sizing-sm'>$row[collectiontext]</div>";
