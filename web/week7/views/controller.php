@@ -282,8 +282,8 @@ switch ($action) {
   case 'update':
     break;
   case 'delete':
-    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY);
-    echo '<h1>'.$collectionid.'</h1>';
+    $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
+    echo "<p>".$collectionid."</p>";
     // Send the data to the model
     $deletion = deleteName($collectionid);
     header('Location: controller.php?action=generate');
