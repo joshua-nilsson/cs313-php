@@ -103,8 +103,8 @@ switch ($action) {
     $prompt .= "<div class='card-header' id='headingThree'>";
     $prompt .= "<h5 class='mb-0'>";
     $prompt .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>Prompt Table</button>";
-    $prompt .= '</h5>';
-    $prompt .= '</div>';
+    $prompt .= "</h5>";
+    $prompt .= "</div>";
     $prompt .= "<div id='collapseThree show' class='collapse show' aria-labelledby='headingThree' data-parent='#accordion'>";
     $prompt .= "<div class='card-body'>";
     $prompt .= "<table class='table'>";
@@ -161,11 +161,8 @@ switch ($action) {
     $prompt .= '</div>';
     $prompt .= '</div>';
     $prompt .= '</div>';
-    $prompt .= '</div>';
-    $prompt .= '</div>';
     $prompt .= "<input type='hidden' name='action' value='insert'>";
     $prompt .= '</form>';
-
     $collection = "<div id='collection' class='col-sm-6'>";
     $collection .= "<form action='controller.php' method='post'>";
     $collection .= "<div id='accordion'>";
@@ -173,8 +170,8 @@ switch ($action) {
     $collection .= "<div class='card-header' id='headingThree'>";
     $collection .= "<h5 class='mb-0'>";
     $collection .= "<button class='btn btn-link' data-toggle='collapse' data-target='#collapseThree' aria-expanded='true' aria-controls='collapseThree'>Collection Table</button>";
-    $collection .= '</h5>';
-    $collection .= '</div>';
+    $collection .= "</h5>";
+    $collection .= "</div>";
     $collection .= "<div id='collapseThree show' class='collapse show' aria-labelledby='headingThree' data-parent='#accordion'>";
     $collection .= "<div class='card-body'>";
     $collection .= "<table class='table'>";
@@ -215,12 +212,8 @@ switch ($action) {
     $collection .= '</tbody>';
     $collection .= '</table>';
     $collection .= '</div>';
-    $collection .= '</div>';
-    $collection .= '</div>';
-    $collection .= '</div>';
     $collection .= "<input type='hidden' name='action' value='delete'>";
     $collection .= '</form>';
-    $collection .= '</div>';
     $collection .= '</div>';
     include 'index.php';
     break;
