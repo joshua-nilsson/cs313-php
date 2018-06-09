@@ -296,11 +296,14 @@ switch ($action) {
 
     $stmt->bindValue(':$collectionid', $collectionid, PDO::PARAM_INT);
 
-    $stmt->execute();
-
-    $stmt->closeCursor();
-
-    header('Location: controller.php?action=generate');
+    try {
+      $stmt->execute();
+      $stmt->closeCursor();
+      header('Location: controller.php?action=generate');
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+      exit;
+    }
     break;
   case 'register':
     $clientusername = filter_input(INPUT_POST, 'clientusername', FILTER_SANITIZE_STRING);
