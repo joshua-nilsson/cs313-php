@@ -26,7 +26,6 @@ table > #head-dark {
   margin-top: 15px;
 }
 
-button {
-  margin:0;
-  display: inline-block;
+th:last-of-type {
+  margin-left:-20px;
 }
