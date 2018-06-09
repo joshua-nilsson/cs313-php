@@ -180,6 +180,7 @@ switch ($action) {
     $collection .= "<th scope='col'>PROMPT</th>";
     $collection .= "<th scope='col'>NAME</th>";
     $collection .= "<th scope='col'>CONTROLS</th>";
+    $collection .= "<th scope='col'></th>";
     $collection .= '</tr>';
     $collection .= '</thead>';
     $collection .= '<tbody>';
@@ -200,6 +201,8 @@ switch ($action) {
       $collection .= "<div class='input-group-append'>";
       $collection .= "<input type='text' name='collectiontext' class='form-control' aria-label='Small' aria-describedby='inputGroup-sizing-lg'>";
       $collection .= '</div>';
+      $collection .= '</td>';
+      $collection .= '<td>';
       $collection .= "<div class='input-group-append'>";
       $collection .= "<button type='submit' class='btn btn-warning' title='Click to Update'><i class='fas fa-sync-alt fa-fw'></i></button>";
       $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
@@ -208,14 +211,14 @@ switch ($action) {
       $collection .= '</td>';
       $collection .= '</form>';
       $collection .= "<form action='controller.php' method='post'>";
-//      $collection .= '<td>';
-//      $collection .= "<div class='input-group-append'>";
-//      $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
-//      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
-//      $collection .= "<input type='hidden' name='action' value='delete'>";
-//      $collection .= '</div>';
-//      $collection .= '</td>';
-//      $collection .= '</form>';
+      $collection .= '<td>';
+      $collection .= "<div class='input-group-append'>";
+      $collection .= "<button type='submit' class='btn btn-danger' title='Click to Delete'><i class='fas fa-trash-alt fa-fw'></i></button>"; // input not button - but how do you submit then with no submit button?
+      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
+      $collection .= "<input type='hidden' name='action' value='delete'>";
+      $collection .= '</div>';
+      $collection .= '</td>';
+      $collection .= '</form>';
       $collection .= '</tr>';
 //      $collection .= '</form>';
     }
