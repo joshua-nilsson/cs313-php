@@ -8,7 +8,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="controller.php" method="post">
+      <form action="../views/controller.php" method="post">
       <div class="modal-body">
         <p>Are you sure you want to delete this name?</p>
       </div>
