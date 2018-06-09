@@ -285,7 +285,7 @@ switch ($action) {
 //    $collectionid = $_POST['collectionid'];
     $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
 //    var_dump($collectionid);
-    echo $collectionid;
+    echo $row[collectionid];
     // Send the data to the model
 //    $deletion = deleteName($collectionid);
     $sql = 'DELETE FROM collection WHERE collectionid = :$collectionid';
