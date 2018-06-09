@@ -91,7 +91,7 @@ switch ($action) {
     // Execute the statement
     $statement1->execute();
 
-    $statement2 = $db->query("SELECT collectionid, collectiontext FROM collection WHERE clientid = '$id'");
+    $statement2 = $db->query("SELECT collectionid, collectiontext FROM collection WHERE clientid = '$id' ORDER BY collectionid DESC");
 
     $prompt = "<div id='prompt' class='container'>";
     $prompt .= "<form action='controller.php' method='post'>";
@@ -298,7 +298,7 @@ switch ($action) {
     $collectionid = filter_input(INPUT_POST, 'collectionid', FILTER_SANITIZE_NUMBER_INT);
     $collectiontext = filter_input(INPUT_POST, 'collectiontext', FILTER_SANITIZE_STRING);
 
-    $sql = 'UPDATE collection SET collectiontext = :collectiontext WHERE collectionid = :collectionid ORDER BY collectionid DESC';
+    $sql = 'UPDATE collection SET collectiontext = :collectiontext WHERE collectionid = :collectionid';
 
     $stmt = $db->prepare($sql);
 
