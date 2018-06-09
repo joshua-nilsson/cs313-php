@@ -214,8 +214,8 @@ switch ($action) {
 //      $collection .= "<input type='hidden' name='collectionid' value='$row[collectionid]'>";
 //      $collection .= "<input type='hidden' name='action' value='delete'>";
       $collection .= '</div>';
-      $collection .= '</form>';
       $collection .= '</td>';
+      $collection .= '</form>';
       $collection .= '</tr>';
 //      $collection .= '</form>';
     }
