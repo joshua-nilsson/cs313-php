@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Postal Rate | Postal Rate Calculator</title>
+    <meta name="description" content="Rates for your Postage">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>Your Postal Rate</h1>
+          <p><span>Type:</span> <%= type %></p>
+          <p><span>Weight:</span> <%= weight %> oz.</p>
+          <p><span>Rate:</span> <%= rate %></p>
+          <p id="msg"><%= msg %></p>
+
+          <a href="/">Back to Calculator</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

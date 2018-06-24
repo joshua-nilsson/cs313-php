@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator | Postal Rate Calculator</title>
+    <meta name="description" content="Calculate your Postal Rates">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1>Postal Rate Calculator</h1>
+          <form action="/getRate" method="get">
+            <div class="form-group">
+              <label for="sel1">Type:</label>
+              <select name="type" class="form-control" id="sel1">
+                <option value='Stamped'>Letters (Stamped)</option>
+                <option value='Metered'>Letters (Metered)</option>
+                <option value='Flats'>Large Envelopes (Flats)</option>
+                <option value='Retail'>First-Class Package - Retail</option>
+              </select>
+
+              <label id="weight">Weight:</label>
+              <input type="text" name="weight" placeholder="Weight in Ounces (Ex: 3)" class="form-control">
+
+              <input type="submit" value="Compute Price" class="btn btn-primary" id="submitBtn">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
